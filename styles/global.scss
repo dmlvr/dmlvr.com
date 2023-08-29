@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-width: 390px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+button {
+  text-decoration: none;
+  transition: 0.3s;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: normal;
+  line-height: 1.25;
+}
+
+main {
+  min-height: calc(100vh - 455px);
+  padding-bottom: 80px;
+}
+
+.dark-theme { 
+  background-color: black;
+  background-image: url("/img/rectangle.svg");
+  background-position: center;
+}
+.light-theme { 
+  background-color: white; 
+  background-image: url("/img/rectangle.svg");
+  background-position: center;
+}

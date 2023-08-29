@@ -1,0 +1,167 @@
+@import './mixin.scss';
+@import './variables.scss';
+
+.main {
+  @include container;
+  padding-top: 44px;
+  min-height: calc(100vh - 84px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+
+  @include viewport(768px) {
+    gap: 25px;
+    padding-top: 25px;
+    justify-content: space-between;
+  }
+}
+
+.image {
+  width: 40vh;
+  height: 40vh;
+  border-radius: 12px;
+
+  @include viewport(768px) {
+    width: 50vw;
+    height: 50vw;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+}
+
+.content {
+  text-align: center;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+
+  @include viewport--m {
+    width: 80%;
+  }
+
+  @include viewport(768px) {
+    width: 90%;
+  }
+}
+
+.subtitle {
+  color: #757982;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.title {
+  @include indents-reset;
+  color: #111827;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -1.92px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+
+  @include viewport--m {
+    font-size: 36px;
+  }
+}
+
+.techstack{
+  @include indents-reset;
+  color: #757982;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 160%;
+  margin-bottom: 20px;
+
+  @include viewport--m {
+    font-size: 10px;
+  }
+}
+
+.about {
+  @include indents-reset;
+  color: #111827;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 170%;
+  transition: 0.3s;
+
+  @include viewport--m {
+    font-size: 14px;
+  }
+}
+
+.content__Dark {
+  .title,
+  .about {
+    color: #d6dce2;
+  }
+}
+
+.btn {
+  @include btn-reset;
+  display: flex;
+  padding: 8px 30px;
+  align-items: center;
+  gap: 8px;
+  color: #F8FAFC;
+  border-radius: 6px;
+  background-color: #111827;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 155%;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #757982;
+    color: white;
+  }
+
+  &__Dark {
+    color: #212123;
+    background-color: #d6dce2;
+    font-weight: 600;
+  }
+}
+
+.socialList {
+  @include list-reset;
+  display: flex;
+  gap: 30px;
+
+  li {
+    width: 100%;
+    display: flex;
+  }
+
+  a {
+    border-radius: 4px;
+    color: #212123;
+    transition: 0.3s;
+    display: flex;
+
+    &:hover {
+      color: #757982;
+      background-color: white;
+    }
+  }
+
+  span {
+    @include visually-hidden;
+  }
+
+  svg {
+    border-radius: 4px;
+  }
+
+  &__Dark a {
+    color: #d6dce2;
+  }
+}

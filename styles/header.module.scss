@@ -1,0 +1,24 @@
+@import './mixin.scss';
+@import './variables.scss';
+
+.header {
+  @include container;
+  padding-top: 19px;
+  padding-bottom: 19px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    @include btn-reset;
+    margin-left: auto;
+  }
+
+  svg {
+    transition: 0.3s;
+  }
+
+  &__Dark svg {
+    color: #d6dce2;
+  }
+}

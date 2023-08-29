@@ -1,0 +1,222 @@
+@import 'variables.scss';
+
+@mixin viewport--xl {
+  @media (max-width: ($xl-width)) {
+    @content;
+  }
+}
+
+@mixin viewport--l {
+  @media (max-width: ($l-width)) {
+    @content;
+  }
+}
+
+@mixin viewport--m {
+  @media (max-width: ($m-width)) {
+    @content;
+  }
+}
+
+@mixin viewport($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: $xl-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 75px;
+  padding-right: 75px;
+  
+  @include viewport--xl {
+    width: $l-width;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include viewport--l {
+    width: $m-width;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @include viewport--m {
+    width: 100%;
+    min-width: $s-width;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+@mixin indents-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+@mixin list-reset {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  list-style-image: none;
+}
+
+@mixin btn-reset {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+@mixin btn {
+  @include btn-reset;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 14px 60px;
+  background: $yellow;
+  color: $black;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+
+  &:hover {
+    background: $orange;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+@mixin slider-arrows {
+  display: flex;
+  gap: 8px;
+
+  & button {
+    @include btn-reset;
+    width: 26px;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    color: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+
+    &:last-child > svg {
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      color: $yellow;
+      cursor: pointer;
+    }
+  }
+}
+
+@mixin horizontal-line-cutting {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin veritical-line-clamp ($size: 3, $height: 4.5em) {
+  max-height: $height;
+  color: #000000;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $size;
+}
+
+
+@mixin title($img: '/products/catalog/img/title-description.svg') {
+  @include indents-reset;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $lightgray;
+
+  h2 {
+    color: $black;
+    font-size: $xl-text;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+  }
+
+  &::before {
+    content: '';
+    width: 48px;
+    aspect-ratio: 1/1;
+    border-radius: 6px;
+    background-color: $yellow;
+    background-image: url($img);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
+  }
+}
+
+@mixin slider-btn {
+  @include btn-reset;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: $yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    @include visually-hidden;
+  }
+}
+
+@mixin table {
+  margin-top: 32px;
+  width: 100%;
+  table-layout: auto;
+
+  tr {
+    background-color: #F1F1F1;
+
+    &:nth-child(2n) {
+      background-color: white;
+    }
+  }
+
+  th {
+    font-weight: 700;
+    text-align: left;
+  }
+
+  td,
+  th {
+    font-size: $m-text;
+    padding: 12px 24px;
+    color: $black;
+    line-height: 24px; /* 150% */
+  }
+}
+
+@mixin product-card-padding {
+  padding-top: 64px;
+
+  @include viewport--m {
+    padding-top: 24px;
+  }
+}

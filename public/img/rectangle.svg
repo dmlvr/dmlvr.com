@@ -1,0 +1,9 @@
+<svg width="103" height="80" viewBox="0 0 103 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+	#rect {
+		stroke: #D6DCE2;
+		opacity: 0.1;
+	}
+</style>
+<rect id="rect" x="0.5" y="0.5" width="102" height="79"/>
+</svg>
