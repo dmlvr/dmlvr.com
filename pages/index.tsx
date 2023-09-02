@@ -7,18 +7,29 @@ type Props = {
   darkTheme: boolean;
   themeHandler: (value?: boolean) => void;
   cookiesDarkTheme: boolean | null;
+  ruLang: boolean;
+  ruLangHandler: (value?: boolean) => void;
+  cookiesRuLang: boolean;
 }
 
-export default function Home({ darkTheme, themeHandler, cookiesDarkTheme }: Props) {
+export default function Home({ 
+  darkTheme, 
+  themeHandler, 
+  cookiesDarkTheme,
+  ruLang,
+  ruLangHandler,
+  cookiesRuLang
+ }: Props) {
 
   useEffect(() => {
+    ruLangHandler(cookiesRuLang);
     if (cookiesDarkTheme === null) {
       const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       themeHandler(isDarkTheme);
     } else if (darkTheme !== cookiesDarkTheme) {
       themeHandler(cookiesDarkTheme);
     }
-  }, [cookiesDarkTheme]);
+  }, []);
 
   useEffect(() => {
     if (darkTheme) {
@@ -31,12 +42,13 @@ export default function Home({ darkTheme, themeHandler, cookiesDarkTheme }: Prop
   }, [darkTheme]);
 
   return (
-    <Main darkTheme={darkTheme} />
+    <Main darkTheme={darkTheme} ruLang={ruLang} />
   )
 }
 
 export const getServerSideProps: GetServerSideProps<{ 
-  cookiesDarkTheme: boolean | null 
+  cookiesDarkTheme: boolean | null,
+  cookiesRuLang: boolean
 }> = async (context) => {
 
   const cookies = cookie.parse(context.req.headers.cookie || '');
@@ -48,5 +60,13 @@ export const getServerSideProps: GetServerSideProps<{
     cookiesDarkTheme = cookies['dark-theme'] === 'true' ? true : false;
   }
 
-  return { props: { cookiesDarkTheme } };
+  let cookiesRuLang: boolean;
+  if (typeof cookies['ru-lang'] === 'undefined') {
+    const langHeader = context.req.headers['accept-language'];
+    cookiesRuLang = langHeader && langHeader.startsWith('ru') ? true : false;
+  } else {
+    cookiesRuLang = cookies['ru-lang'] === 'true' ? true : false; // Исправление здесь
+  }
+
+  return { props: { cookiesDarkTheme, cookiesRuLang } };
 }
