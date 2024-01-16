@@ -1,11 +1,9 @@
 import { GetServerSideProps, NextApiRequest } from 'next';
-import cookie from 'cookie';
-import Main from '@/components/Main/Main';
 import useThemeAndLang from '@/hooks/useThemeLang';
 import getSetting from '@/utils/getSetting';
 import { PagesProps } from '@/types/types';
 
-export default function Home({ 
+export default function Contacts({ 
   darkTheme, 
   themeHandler, 
   cookiesDarkTheme,
@@ -13,8 +11,6 @@ export default function Home({
   ruLangHandler,
   cookiesRuLang
  }: PagesProps) {
-
-  console.log(cookiesRuLang);
 
   useThemeAndLang({
     ruLangHandler,
@@ -25,7 +21,7 @@ export default function Home({
   })
 
   return (
-    <Main darkTheme={darkTheme} ruLang={ruLang} />
+    <p>Contacts</p>
   )
 }
 

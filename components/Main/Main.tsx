@@ -1,16 +1,12 @@
 import React from 'react';
-import styles from '@/styles/main.module.scss';
+import styles from './Main.module.scss';
 import Image from 'next/image'
 import Link from 'next/link';
 import ym from 'react-yandex-metrika';
-import { texts } from '../const';
+import { texts } from '@/const';
+import { ComponentProps } from '@/types/types'
 
-type Props = {
-  darkTheme: boolean
-  ruLang: boolean
-}
-
-function Main({darkTheme, ruLang}: Props) {
+function Main({darkTheme, ruLang}: ComponentProps) {
 
   const lang = ruLang ? 'ru' : 'en';
 
@@ -29,7 +25,7 @@ function Main({darkTheme, ruLang}: Props) {
         className={darkTheme 
         ? `${styles.btn} ${styles.btn__Dark}` 
         : styles.btn} 
-        href={'Dmitry_Lavrinovich_-_Frontend_Developer.pdf'} 
+        href={'Dmitry_Lavrinovich_-_Javascript_Developer.pdf'} 
         onClick={() => ym('reachGoal','getCV')}
       >
         <span>{texts[lang].btn}</span>

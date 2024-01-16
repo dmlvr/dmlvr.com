@@ -1,0 +1,101 @@
+@import '@/styles/mixin.scss';
+@import '@/styles/variables.scss';
+
+.header {
+  @include container;
+  padding-top: 19px;
+  padding-bottom: 19px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.logo {
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  svg {
+    color: black;
+  }
+
+  &__Dark svg {
+    color: #d6dce2;
+  }
+}
+
+.theme {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  button {
+    @include btn-reset;
+    margin-left: auto;
+  }
+
+  svg {
+    transition: 0.3s;
+  }
+}
+
+.langs {
+  @include btn-reset;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: black;
+
+  &__Dark {
+    color: #d6dce2;
+  }
+}
+
+.langSvg {
+  &__Ru {
+    transform: rotate(180deg);
+  }
+}
+
+.menu {
+  @include list-reset;
+  display: flex;
+  gap: 16px;
+
+  a {
+    color: black;
+    font-size: 14px;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      height: 2px;
+      width: 0%;
+      left: 0;
+      bottom: -5px;
+      background-color: rgba(0,0,0,0.4);
+      transition: width .3s ease-in-out;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+  
+
+  &__Dark {
+    a {
+      color: #d6dce2;
+
+      &::before {
+        background-color: rgba(214,220,226,0.5);
+      }
+    }
+  }
+}

@@ -1,13 +1,15 @@
-@import './mixin.scss';
-@import './variables.scss';
+@import '@/styles/mixin.scss';
+@import '@/styles/variables.scss';
 
 .main {
   @include container;
-  padding-top: 44px;
-  min-height: calc(100vh - 84px);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 3vh;
 
   @include viewport(768px) {
@@ -37,7 +39,7 @@
 
 .content {
   text-align: center;
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-direction: column;
 

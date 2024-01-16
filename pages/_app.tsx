@@ -1,9 +1,9 @@
-import Header from '@/components/Header'
+import Header from '@/components/Header/Header'
 import '@/styles/global.scss'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import Cookies from 'js-cookie';
-import YM from '@/components/YM';
+import YM from '@/hooks/YM';
 import Head from 'next/head';
 import { texts } from '@/const';
 
