@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from '@/styles/main.module.scss';
-import mainImage from '@/public/img/main.png';
 import Image from 'next/image'
 import Link from 'next/link';
 import ym from 'react-yandex-metrika';
-import { texts } from '@/const';
+import { texts } from '../const';
 
 type Props = {
   darkTheme: boolean
@@ -18,7 +17,7 @@ function Main({darkTheme, ruLang}: Props) {
   return (
     <main className={styles.main}>
       <div className={styles.image}>
-        <Image alt={texts[lang].name} src={mainImage} width={400} height={400} />
+        <Image alt={texts[lang].name} src={`/img/main.png`} width={400} height={400} />
       </div>
       <div className={darkTheme ? `${styles.content} ${styles.content__Dark}` : styles.content}>
         <span className={styles.subtitle}>{texts[lang].hello}</span>
