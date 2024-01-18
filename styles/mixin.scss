@@ -79,28 +79,6 @@
   margin: -1px;
 }
 
-@mixin btn {
-  @include btn-reset;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 14px 60px;
-  background: $yellow;
-  color: $black;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  align-self: flex-start;
-
-  &:hover {
-    background: $orange;
-    color: white;
-    cursor: pointer;
-  }
-}
-
 @mixin horizontal-line-cutting {
   white-space: nowrap;
   overflow: hidden;
@@ -116,29 +94,9 @@
   -webkit-line-clamp: $size;
 }
 
-@mixin table {
-  margin-top: 32px;
-  width: 100%;
-  table-layout: auto;
-
-  tr {
-    background-color: #F1F1F1;
-
-    &:nth-child(2n) {
-      background-color: white;
-    }
-  }
-
-  th {
-    font-weight: 700;
-    text-align: left;
-  }
-
-  td,
-  th {
-    font-size: $m-text;
-    padding: 12px 24px;
-    color: $black;
-    line-height: 24px; /* 150% */
-  }
+@mixin main {
+  @include container;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: calc(100vh - 90px);
 }

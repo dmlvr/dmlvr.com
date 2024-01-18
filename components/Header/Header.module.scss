@@ -13,17 +13,12 @@
 }
 
 .logo {
-
   &:hover {
     opacity: 0.5;
   }
 
   svg {
-    color: black;
-  }
-
-  &__Dark svg {
-    color: #d6dce2;
+    color: var(--primary-color);
   }
 }
 
@@ -49,26 +44,25 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: black;
-
-  &__Dark {
-    color: #d6dce2;
-  }
+  color: var(--primary-color);
 }
 
 .langSvg {
+  transition: 0s;
   &__Ru {
     transform: rotate(180deg);
   }
 }
 
-.menu {
+.menuList {
   @include list-reset;
   display: flex;
   gap: 16px;
+  min-width: 270px;
+  justify-content: space-between;
 
   a {
-    color: black;
+    color: var(--primary-color);
     font-size: 14px;
     position: relative;
 
@@ -79,23 +73,12 @@
       width: 0%;
       left: 0;
       bottom: -5px;
-      background-color: rgba(0,0,0,0.4);
+      background-color: var(--secondary-color);
       transition: width .3s ease-in-out;
     }
 
     &:hover::before {
       width: 100%;
-    }
-  }
-  
-
-  &__Dark {
-    a {
-      color: #d6dce2;
-
-      &::before {
-        background-color: rgba(214,220,226,0.5);
-      }
     }
   }
 }

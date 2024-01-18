@@ -1,4 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'variables.scss';
+
+:root {
+  --secondary-color: #757982;
+
+  --primary-color-dark: #d6dce2;
+  --tertiary-color-dark: #212123;
+
+  --primary-color-white: #111827;
+  --tertiary-color-white: #F8FAFC;
+}
+
 
 html {
   box-sizing: border-box;
@@ -12,6 +24,12 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  transition: 0.3s;
+}
+
+*::selection {
+  color: var(--tertiary-color);
+  background: var(--primary-color);
 }
 
 img {
@@ -36,36 +54,31 @@ body {
   line-height: 1.25;
 }
 
-// main {
-//   min-height: calc(100vh - 455px);
-//   padding-bottom: 80px;
-// }
-
 .dark-theme { 
   background: linear-gradient(
         to right,
-        rgba(214,220,226,0.12) 1px,
+        rgba(214,220,226,0.08) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        rgba(214,220,226,0.12) 1px,
+        rgba(214,220,226,0.08) 1px,
         transparent 1px
       );
   background-size: 60px 60px;
-  background-color: black;
+  background-color: var(--tertiary-color);
 }
 .light-theme { 
   background: linear-gradient(
         to right,
-        rgba(214,220,226,0.2) 1px,
+        rgba(214,220,226,0.4) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        rgba(214,220,226,0.2) 1px,
+        rgba(214,220,226,0.4) 1px,
         transparent 1px
       );
   background-size: 60px 60px;
-  background-position: center;
+  background-color: var(--tertiary-color);
 }

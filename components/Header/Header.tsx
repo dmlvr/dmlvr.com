@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Header.module.scss';
 import Link from 'next/link';
+import useHeader from './Header.controller';
 
 type Props = {
   darkTheme: boolean;
@@ -15,25 +16,37 @@ function Header({
   ruLang,
   ruLangHandler
 }: Props) {
+
+  const { menuItems, currentPath } = useHeader({ ruLang })
   
   return (
     <header className={styles.header}>
-      <Link className={darkTheme ? `${styles.logo} ${styles.logo__Dark}` : styles.logo} href="/">
+      <Link className={styles.logo} href="/">
         <svg width={100} height={46} viewBox="0 0 250 114">
           <use xlinkHref='./img/sprite.svg#logo' />
         </svg>
       </Link>
-      <ul className={darkTheme ? `${styles.menu} ${styles.menu__Dark}` : styles.menu}>
-        <li><Link href="about">Обо мне</Link></li>
-        <li><Link href="portfolio">Опыт и проекты</Link></li>
-        <li><Link href="contacts">Контакты</Link></li>
+      <ul className={styles.menuList}>
+        {menuItems.map((menuItem) => (
+          <li 
+            key={menuItem.path} 
+            style={{
+              fontWeight: currentPath === menuItem.path 
+              ? 'bold' 
+              : 'normal'
+            }}
+          >
+            <Link 
+              href={menuItem.path}
+            >
+              {menuItem.text}
+            </Link>
+          </li>
+        ))}
       </ul>
       <button 
         onClick={() => ruLangHandler()}
-        className={darkTheme 
-          ? `${styles.langs} ${styles.langs__Dark}` 
-          : styles.langs
-        }
+        className={styles.langs}
       >
         <span>ру</span>
         <svg 

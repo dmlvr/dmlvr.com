@@ -3,13 +3,16 @@ import '@/styles/global.scss'
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import Cookies from 'js-cookie';
-import YM from '@/hooks/YM';
+import YM from '@/components/YM';
 import Head from 'next/head';
-import { texts } from '@/const';
+import { useColors } from '@/hooks/useColors';
 
 export default function App({ Component, pageProps }: AppProps) {
-    const [darkTheme, setDarkTheme] = useState(false);
-    const [ruLang, setRuLang] = useState(true);
+    const { cookiesRuLang } = pageProps ?? false;
+    const { cookiesDarkTheme } = pageProps ?? null;
+
+    const [darkTheme, setDarkTheme] = useState(cookiesDarkTheme);
+    const [ruLang, setRuLang] = useState(cookiesRuLang);
     
     const themeHandler = (value?: boolean) => {
       const newTheme = value !== undefined ? value : !darkTheme;
@@ -23,18 +26,20 @@ export default function App({ Component, pageProps }: AppProps) {
       Cookies.set('ru-lang', newValue.toString());
     }
 
-    const lang = ruLang ? 'ru' : 'en';
+    useColors(darkTheme);
 
   return (
     <>
       <Head>
-        <title>{`${texts[lang].name}, ${texts[lang].jobTitle}`}</title>
-        <meta name="description" content={`${texts[lang].name}, ${texts[lang].jobTitle} | ${texts[lang].stack}`} />
         <link rel="icon" href="favicon.svg" type="image/svg+xml" />
       </Head>
       <YM />
       <Header darkTheme={darkTheme} themeHandler={themeHandler} ruLang={ruLang} ruLangHandler={ruLangHandler} />
-      <Component darkTheme={darkTheme} themeHandler={themeHandler} ruLang={ruLang} ruLangHandler={ruLangHandler} {...pageProps} />
+      <Component 
+        darkTheme={darkTheme} 
+        ruLang={ruLang} 
+        {...pageProps} 
+      />
     </>
   )
 }
