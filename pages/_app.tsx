@@ -1,7 +1,7 @@
 import Header from '@/components/Header/Header'
 import '@/styles/global.scss'
 import type { AppProps } from 'next/app'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
 import YM from '@/components/YM';
 import Head from 'next/head';
@@ -13,6 +13,14 @@ export default function App({ Component, pageProps }: AppProps) {
 
     const [darkTheme, setDarkTheme] = useState(cookiesDarkTheme);
     const [ruLang, setRuLang] = useState(cookiesRuLang);
+
+    useEffect(() => {
+      const initDarkTheme = cookiesDarkTheme === null 
+          ? window && window.matchMedia('(prefers-color-scheme: dark)').matches
+          : cookiesDarkTheme;
+
+        setDarkTheme(initDarkTheme);
+    }, [cookiesDarkTheme]);
     
     const themeHandler = (value?: boolean) => {
       const newTheme = value !== undefined ? value : !darkTheme;

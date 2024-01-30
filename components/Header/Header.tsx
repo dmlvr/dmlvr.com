@@ -17,61 +17,93 @@ function Header({
   ruLangHandler
 }: Props) {
 
-  const { menuItems, currentPath } = useHeader({ ruLang })
-  
+  const { 
+    menuItems, 
+    currentPath,
+    isMenuOpen,
+    setIsMenuOpen
+  } = useHeader(ruLang)
+
   return (
     <header className={styles.header}>
-      <Link className={styles.logo} href="/">
+      { isMenuOpen && 
+        <div 
+          className={styles.underlay}
+          onClick={() => setIsMenuOpen(false)} 
+        />
+      }
+      <Link 
+        className={styles.logo} 
+        href="/"
+        onClick={() => setIsMenuOpen(false)}
+      >
         <svg width={100} height={46} viewBox="0 0 250 114">
           <use xlinkHref='./img/sprite.svg#logo' />
         </svg>
       </Link>
-      <ul className={styles.menuList}>
-        {menuItems.map((menuItem) => (
-          <li 
-            key={menuItem.path} 
-            style={{
-              fontWeight: currentPath === menuItem.path 
-              ? 'bold' 
-              : 'normal'
-            }}
-          >
-            <Link 
-              href={menuItem.path}
-            >
-              {menuItem.text}
-            </Link>
-          </li>
-        ))}
-      </ul>
       <button 
-        onClick={() => ruLangHandler()}
-        className={styles.langs}
+        className={`
+        ${styles.mobileNav}
+        ${isMenuOpen && styles.mobileNav__Open}
+      `}
+        onClick={() => setIsMenuOpen(prev => !prev)}
       >
-        <span>ру</span>
-        <svg 
-          className={ruLang ? `${styles.langSvg} ${styles.langSvg__Ru}` : styles.langSvg} 
-          width={36} 
-          height={20}
-        >
-          <use xlinkHref='./img/sprite.svg#header-dark-mode-btn' />
-        </svg>
-        <span>en</span>
+        <span>Open\Close navigations</span>
       </button>
-      <div className={styles.theme}>
-        <button onClick={() => themeHandler()}>
-          <svg width={36} height={20}>
-            {darkTheme
-            ? <use xlinkHref='./img/sprite.svg#header-dark-mode-btn' />
-            : <use xlinkHref='./img/sprite.svg#header-light-mode-btn' />
-            }
+      <nav 
+        className={`
+          ${styles.navigations}
+          ${isMenuOpen && styles.navigations__Open}
+        `}
+      >
+        <ul className={styles.menuList}>
+          {menuItems.map((menuItem) => (
+            <li 
+              key={menuItem.path} 
+              style={{
+                fontWeight: currentPath === menuItem.path 
+                ? 'bold' 
+                : 'normal'
+              }}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Link 
+                href={menuItem.path}
+              >
+                {menuItem.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <button 
+          onClick={() => ruLangHandler()}
+          className={styles.langs}
+        >
+          <span>ру</span>
+          <svg 
+            className={ruLang ? `${styles.langSvg} ${styles.langSvg__Ru}` : styles.langSvg} 
+            width={36} 
+            height={20}
+          >
+            <use xlinkHref='./img/sprite.svg#header-dark-mode-btn' />
           </svg>
+          <span>en</span>
         </button>
-        {darkTheme
-        ? <img src='./img/header-dark-mode-icon.png' alt='dark mode icon'/>
-        : <svg width="23" height="24" viewBox="0 0 23 24"><use xlinkHref='./img/sprite.svg#header-light-mode-icon' /></svg>
-        }
-      </div>
+        <div className={styles.theme}>
+          <button onClick={() => themeHandler()}>
+            <svg width={36} height={20}>
+              {darkTheme
+              ? <use xlinkHref='./img/sprite.svg#header-dark-mode-btn' />
+              : <use xlinkHref='./img/sprite.svg#header-light-mode-btn' />
+              }
+            </svg>
+          </button>
+          {darkTheme
+          ? <img src='./img/header-dark-mode-icon.png' alt='dark mode icon'/>
+          : <svg width="23" height="24" viewBox="0 0 23 24"><use xlinkHref='./img/sprite.svg#header-light-mode-icon' /></svg>
+          }
+        </div>
+      </nav>
     </header>
   );
 }

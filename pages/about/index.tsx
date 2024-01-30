@@ -1,12 +1,12 @@
 import { GetServerSideProps, NextApiRequest } from 'next';
 import getSetting from '@/utils/getSetting';
-import { PagesProps } from '@/types/types';
+import { Props } from '@/types/types';
 import About from '@/components/About/About';
 
 export default function AboutPage({ 
   darkTheme, 
   ruLang,
- }: PagesProps) {
+ }: Props) {
 
   return (
     <About darkTheme={darkTheme} ruLang={ruLang} />

@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-export const useColors = (darkTheme: boolean) => {
+export const useColors = (darkTheme: boolean | null) => {
   useEffect(() => {
     const root = document.documentElement;
-
+    
     if (darkTheme) {
       root.style.setProperty('--primary-color', 'var(--primary-color-dark)');
       root.style.setProperty('--tertiary-color', 'var(--tertiary-color-dark)');

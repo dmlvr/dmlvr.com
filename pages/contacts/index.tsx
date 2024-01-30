@@ -1,11 +1,11 @@
 import { GetServerSideProps, NextApiRequest } from 'next';
 import getSetting from '@/utils/getSetting';
-import { PagesProps } from '@/types/types';
+import { Props } from '@/types/types';
 
 export default function Contacts({ 
   darkTheme, 
   ruLang,
- }: PagesProps) {
+ }: Props) {
 
   return (
     <p>Contacts</p>

@@ -1,0 +1,74 @@
+@import '@/styles/mixin.scss';
+
+.portfolio {
+  @include main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--primary-color);
+
+  h1 {
+    @include visually-hidden;
+  }
+  
+}
+
+.projects {
+  @include list-reset;
+  width: 100%;
+  display: flex;
+  gap: 3vw;
+}
+
+.projectCard {
+  width: 100%;
+  display: flex;
+  gap: 3vw;
+
+  .video {
+    width: calc(50% - 1.5vw);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 16px;
+
+    span {
+      font-size: 14px;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .texts {
+    width: calc(50% - 1.5vw);
+
+    h2 {
+      @include indents-reset;
+      font-size: 40px;
+      padding-bottom: 16px;
+    }
+
+    p {
+      @include paragraph;
+    }
+
+    ul {
+      @include indents-reset;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    li {
+      margin-top: 12px;
+      line-height: 1.5em;
+    }
+  }
+}
+

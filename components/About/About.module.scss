@@ -4,10 +4,26 @@
   @include main;
   display: flex;
   gap: 3vw;
+
+  @include viewport--m {
+    flex-direction: column-reverse;
+  }
 }
 
 .image {
   width: calc(40% - 1.5vw);
+
+  @include viewport--m {
+    // width: 100%;
+    // aspect-ratio: 1/1;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include viewport(760px) {
+    width: 95%;
+  }
 
   img {
     width: 100%;
@@ -20,15 +36,33 @@
 .text {
   width: calc(60% - 1.5vw);
   color: var(--primary-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include viewport--m {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include viewport(760px) {
+    width: 95%;
+  }
 
   h1 {
     margin: 0;
+    padding-bottom: 16px;
+    font-size: 40px
   }
 
   p {
-    margin: 0;
-    margin-top: 16px;
-    line-height: 2em;
+    @include paragraph;
+    padding-right: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   a {
@@ -38,16 +72,23 @@
     &::before {
       position: absolute;
       content: "";
-      height: 2px;
-      width: 100%;
+      height: 1px;
+      width: 0;
       left: 0;
-      bottom: -1px;
+      bottom: 0;
       background-color: var(--secondary-color);
-      transition: width .3s ease-in-out;
+      // transition: width .3s ease-in-out;
     }
 
     &:hover::before {
-      width: 0%;
+      width: 100%;
     }
   }
+}
+
+.paragraps {
+  max-height: calc(100% - 80px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  @include custom-scrollbar;
 }

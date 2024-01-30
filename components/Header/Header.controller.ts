@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 
-const useHeader = ({
-  ruLang
-}: {ruLang: boolean}) => {
+const useHeader = (ruLang: boolean) => {
 
   const router = useRouter();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
     {
@@ -23,7 +24,9 @@ const useHeader = ({
 
   return {
     menuItems,
-    currentPath: router.pathname
+    currentPath: router.pathname,
+    isMenuOpen,
+    setIsMenuOpen
   }
 }
 

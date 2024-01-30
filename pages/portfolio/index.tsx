@@ -1,14 +1,15 @@
 import { GetServerSideProps, NextApiRequest } from 'next';
 import getSetting from '@/utils/getSetting';
-import { PagesProps } from '@/types/types';
+import { Props } from '@/types/types';
+import Portfolio from '@/components/Portfolio/Portfolio';
 
-export default function Portfolio({ 
-  darkTheme, 
+export default function PortfolioPage({ 
   ruLang,
- }: PagesProps) {
+  darkTheme
+ }: Props) {
 
   return (
-    <p>Portfolio</p>
+    <Portfolio ruLang={ruLang} darkTheme={darkTheme} />
   )
 }
 
