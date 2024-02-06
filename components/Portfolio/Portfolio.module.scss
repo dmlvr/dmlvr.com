@@ -23,52 +23,85 @@
 
 .projectCard {
   width: 100%;
-  display: flex;
-  gap: 3vw;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: auto;
+  gap: 0 3vw;
+  grid-template-areas:
+    "video title"
+    "video texts";
 
-  .video {
-    width: calc(50% - 1.5vw);
-    height: auto;
+  @include viewport--m {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    border-radius: 16px;
-
-    span {
-      font-size: 14px;
-    }
-
-    video {
-      width: 100%;
-      height: auto;
-    }
+    gap: 5vw;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .texts {
-    width: calc(50% - 1.5vw);
-
-    h2 {
-      @include indents-reset;
-      font-size: 40px;
-      padding-bottom: 16px;
-    }
-
-    p {
-      @include paragraph;
-    }
-
-    ul {
-      @include indents-reset;
-      margin-top: 24px;
-      margin-bottom: 24px;
-      padding-left: 20px;
-      list-style-type: disc;
-    }
-
-    li {
-      margin-top: 12px;
-      line-height: 1.5em;
-    }
+  @include viewport(760px) {
+    width: 95%;
   }
 }
 
+.title {
+  @include indents-reset;
+  font-size: 40px;
+  grid-area: title;
+}
+
+.video {
+  grid-area: video;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 16px;
+
+  span {
+    font-size: 14px;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.texts {
+  grid-area: texts;
+
+  p {
+    @include paragraph;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  ul {
+    @include indents-reset;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+
+  li {
+    margin-top: 12px;
+    line-height: 1.5em;
+  }
+}
+
+
+.links {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+
+  a {
+    @include btn;
+  }
+}
