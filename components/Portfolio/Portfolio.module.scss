@@ -7,6 +7,9 @@
   align-items: center;
   gap: 16px;
   color: var(--primary-color);
+  height: calc(100svh - 90px);
+  overflow-y: auto;
+  overflow-x: hidden;
 
   h1 {
     @include visually-hidden;
@@ -18,7 +21,8 @@
   @include list-reset;
   width: 100%;
   display: flex;
-  gap: 3vw;
+  flex-direction: column;
+  gap: 100px;
 }
 
 .projectCard {
@@ -26,7 +30,7 @@
   display: grid;
   grid-template-columns: 55% 45%;
   grid-template-rows: auto;
-  gap: 0 3vw;
+  gap: 0 50px;
   grid-template-areas:
     "video title"
     "video texts";
@@ -49,6 +53,7 @@
   @include indents-reset;
   font-size: 40px;
   grid-area: title;
+  padding-left: 20px;
 }
 
 .video {
@@ -71,6 +76,7 @@
 
 .texts {
   grid-area: texts;
+  padding-left: 20px;
 
   p {
     @include paragraph;
