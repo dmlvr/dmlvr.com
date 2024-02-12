@@ -21,7 +21,16 @@ const useAbout = (ruLang: boolean) => {
       <p>В августе 2022 вместе с женой переехал на Кипр. В это же время устроился в компанию IEK, где и работаю сейчас как фрилансер по договору ГПХ.</p>
       <p>Теперь я ищу работу разработчика на Кипре. Мой <Link href="/portfolio">опыт и проекты</Link> описаны в соответсвующем разделе, <Link href="/Dmitry_Lavrinovich_-_Javascript_Developer.pdf">CV доступен по ссылке</Link>. Буду очень рад возможности пообщаться и посотрудничать.</p>
     </>
-    : <p style={{color: 'red'}}>Translate it!</p>
+    : <>
+      <p>Hello! My name is Dmitry, I am {getYears(new Date(1990, 7, 22))} years old. Born in Belarus, I live in Cyprus.</p>
+      <p>I have been working in the industry {getYears(new Date(2012, 5, 30))} years. {getYears(new Date(2021, 0, 15))} last as a JavaScript developer. Previously worked in <span style={{whiteSpace: 'nowrap'}}>digital marketing</span> and often acted as a customer for websites and applications.</p>
+      <p>I am a marketer by education, graduated from a bachelor's degree at <span style={{whiteSpace: 'nowrap'}}>Belarusian State University</span> in 2014. And a Master's degree at <span style={{whiteSpace: 'nowrap'}}>Belarusian Trade and Economic University of Consumer Cooperation</span> in 2017.</p>
+      <p>My passion for programming began in 2018 as part of horizontal career development. In order to better understand programmers and more accurately set tasks for them, I signed up for a coding course. In the same year, I wrote my first service for semi-automatic <a target='_blank' href="">generation of shortened links with UTM tags</a> and I really liked it 😊. I found it when I was making this site, wrapped it in Docker and <a target='_blank' href="">pushed it to GitHub</a> so that I could show it in its original form.</p>
+      <p>After completing the courses for several years, programming remained my hobby and a bit of a superpower, which allowed me to quickly create a landing page for launching an advertising campaign with my own hands. All this time, I continued to be interested in coding, improved in layout and gradually increased my skills.</p>
+      <p>By the end of 2020, I left marketing and got a job as a developer in a printing house. I was involved in supporting a website on WordPress, wrote an online souvenir store using React.</p>
+      <p>In August 2022, he and his wife moved to Cyprus. At the same time, I got a job at the IEK company, where I now work as a freelancer under a contract.</p>
+      <p>Now I'm looking for a developer job in Cyprus. My <Link href="/portfolio">experience and projects</Link> are described in the corresponding section, <Link href="/Dmitry_Lavrinovich_-_Javascript_Developer.pdf">CV is available at the link</Link>.  I will be very glad to have the opportunity to communicate and collaborate.</p>
+    </>
   }
 
   return {
