@@ -16,8 +16,14 @@ function About({darkTheme, ruLang}: Props) {
         {/* <meta name="description" content={`${texts.name}, ${texts.jobTitle} | ${texts.stack}`} /> */}
       </Head>
       <main className={styles.about}>
-        <div className={styles.image}>
-          <Image alt={'about'} width={500} height={800} src={'/img/about.jpg'} />
+        <div 
+          className={styles.image}
+          style={{
+            borderRadius: '16px',
+            boxShadow: darkTheme ? 'none' : '0 5px 25px rgba(0,0,0,.12)'
+          }} 
+        >
+          <Image alt={texts.title} width={500} height={800} src={'/img/about.jpg'} />
         </div>
         <div className={styles.text}>
           <h1>{texts.title}</h1>

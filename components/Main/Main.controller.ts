@@ -1,3 +1,5 @@
+import { socialList } from '@/constants'
+
 const useMain = ({
   ruLang
 }: {ruLang: boolean}) => {
@@ -20,25 +22,6 @@ const useMain = ({
     ? 'Смотреть CV'
     : 'Explore CV',
   }
-
-  const socialList = [
-    {
-      name: 'linkedin',
-      url: 'https://www.linkedin.com/in/dmlvr/',
-    },
-    {
-      name: 'github',
-      url: 'https://github.com/dmlvr/',
-    },
-    {
-      name: 'facebook',
-      url: 'https://www.facebook.com/dm1vr',
-    },
-    {
-      name: 'telegram',
-      url: 'https://t.me/dmlvr',
-    },
-  ]
 
   return {
     texts,

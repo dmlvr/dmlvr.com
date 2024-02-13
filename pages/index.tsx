@@ -2,12 +2,12 @@ import { GetServerSideProps, NextApiRequest } from 'next';
 import cookie from 'cookie';
 import Main from '@/components/Main/Main';
 import getSetting from '@/utils/getSetting';
-import { PagesProps } from '@/types/types';
+import { Props } from '@/types/types';
 
 export default function Home({ 
   darkTheme, 
   ruLang,
- }: PagesProps) {
+ }: Props) {
 
   return (
     <Main darkTheme={darkTheme} ruLang={ruLang} />

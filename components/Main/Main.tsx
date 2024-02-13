@@ -7,7 +7,7 @@ import { Props } from '@/types/types'
 import useMain from './Main.controller';
 import Head from 'next/head';
 
-function Main({ ruLang }: Props) {
+function Main({ ruLang, darkTheme }: Props) {
 
   const { texts, socialList } = useMain({ ruLang })
 
@@ -18,7 +18,13 @@ function Main({ ruLang }: Props) {
       <meta name="description" content={`${texts.name}, ${texts.jobTitle} | ${texts.stack}`} />
     </Head>
     <main className={styles.main}>
-      <div className={styles.image}>
+      <div 
+        className={styles.image}
+        style={{
+          borderRadius: '16px',
+          boxShadow: darkTheme ? 'none' : '0 5px 25px rgba(0,0,0,.12)'
+        }} 
+      >
         <Image alt={texts.name} src={`/img/main.png`} width={400} height={400} />
       </div>
       <div className={styles.content}>

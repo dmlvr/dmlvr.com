@@ -21,11 +21,13 @@
     "gulp-svgstore": "^9.0.0",
     "js-cookie": "^3.0.5",
     "next": "^14.0.3",
+    "nodemailer": "^6.9.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-yandex-metrika": "^2.6.0",
     "sass": "^1.66.1",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/cookie": "^0.5.1",

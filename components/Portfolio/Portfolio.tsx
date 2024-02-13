@@ -17,9 +17,9 @@ function Portfolio({ ruLang, darkTheme }: Props) {
       <main className={styles.portfolio}>
         <h1>{texts.title}</h1>
         <ul className={styles.projects}>
-          {projects.map((el) => (
+          {projects.map((project) => (
             <li className={styles.projectCard}>
-              <h2 className={styles.title}>{el.title}</h2>
+              <h2 className={styles.title}>{project.title}</h2>
               <div 
                 className={styles.video}
               >
@@ -29,19 +29,20 @@ function Portfolio({ ruLang, darkTheme }: Props) {
                   loop={true} 
                   style={{
                     borderRadius: '16px',
-                    boxShadow: darkTheme ? 'none' : '0 5px 50px rgba(0,0,0,.12)'
+                    boxShadow: darkTheme ? 'none' : '0 5px 20px rgba(0,0,0,.12)'
                   }} 
                   poster="./img/Scene_02.png"
                 >
-                  <source src={el.videoUrls.mp4} type="video/mp4"/>
+                  <source src={project.videoUrls.mp4} type="video/mp4"/>
                 </video>
+                {project.videoComment.length > 0 && <span>{project.videoComment}</span>}
               </div>
               <div className={styles.texts}>
-                {el.details}
-                {el.links && 
-                el.links.length > 0 &&
+                {project.details}
+                {project.links && 
+                project.links.length > 0 &&
                   <div className={styles.links}>
-                    {el.links.map((link) => (
+                    {project.links.map((link) => (
                       <Link href={link.url}>
                       <span>{link.name}</span>
                     </Link>
