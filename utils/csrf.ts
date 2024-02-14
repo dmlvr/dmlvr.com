@@ -1,12 +1,10 @@
-// utils/csrf.ts
-
 import { serialize } from 'cookie';
 import csrf from 'csrf';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 // Генерация CSRF-токена
 const tokens = new csrf();
-const secret = process.env.CSRF_SECRET as string; // Замените 'secret' на ваш секретный ключ
+const secret = process.env.CSRF_SECRET as string;
 const getToken = () => tokens.create(secret);
 const verifyToken = (token: string) => tokens.verify(secret, token);
 
@@ -25,6 +23,7 @@ export const useCsrfToken = (req: NextApiRequest, res: NextApiResponse) => {
   return token;
 };
 
+// Проверка CSRF-токена
 export const verifyCsrfToken = (csrfToken: string) => {
   return verifyToken(csrfToken)
 };
