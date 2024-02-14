@@ -1,7 +1,7 @@
 import { socialList } from '@/constants'
-import { error } from 'console';
+import useFormValidation from '@/utils/formValidation';
 import { useState } from 'react'
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
 
 type ErrorItem = {
   code: string;
@@ -9,27 +9,7 @@ type ErrorItem = {
   path: string[];
 };
 
-const useContacts = (ruLang: boolean) => {
-
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
-
-  const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const cleanErrors = () => {
-    setErrors({
-      name: '',
-      email: '',
-      message: ''
-    })
-  }
+const useContacts = (ruLang: boolean, csrfToken: string) => {
 
   const texts = {
     title: ruLang
@@ -37,7 +17,7 @@ const useContacts = (ruLang: boolean) => {
     : 'Contacts',
     paragraph: ruLang
     ? 'Быстро отвечаю в telegram. Несколько раз в неделю просматриваю почту и LinkedIn. Можно написать мне в почту прямо с сайта.'
-    : 'I answer quickly in telegram. I check my email and LinkedIn some times a week. You can email me directly from the site.'
+    : 'Answer quickly in telegram. I check my email and LinkedIn some times a week. You can email me directly from the site.'
   }
 
   const formTexts = {
@@ -68,50 +48,77 @@ const useContacts = (ruLang: boolean) => {
     : 'Submit'
   }
 
+  const initState = {
+    name: '',
+    email: '',
+    message: ''
+  }
+
+  const [form, setForm] = useState(initState)
+
+  const [errors, setErrors] = useState(initState);
+
+  const cleanErrors = () => {
+    setErrors(initState)
+  }
+
   const changeHandler = (field: Record<string, string>) => {
     cleanErrors();
     setForm((prev) => ({...prev, ...field}))
   }
 
-  const formSubmit = (e: any) => {
-    e.preventDefault();
-    console.log('submit');
-    try {
-      const Form = z.object({
-        name: z.string().refine(value => value.trim() !== '', {
-          message: ruLang
-          ? 'Пожалуйста, укажите Ваше имя'
-          : 'What is your name?'
-        }),
-        email: z.string().email({
-          message: ruLang
-          ? 'Пожалуйста, введите корректный email'
-          : 'Invalid email format. Please provide a valid email address.',
-        }),
-        message: z.string().refine(value => value.trim() !== '' , {
-          message: ruLang
-          ? 'Пожалуйста, расскажите чем я могу быть Вам полезен'
-          : 'Please, tell me how I can be useful to you?'
-        })
-      });
-  
-      Form.parse(form);
-      
-      console.log('valid');
+  const errorHandler = (errors: ErrorItem[]) => {
+    console.log(errors)
+    const errorObject: Record<string, string> = {};
 
+    for (const err of errors) {
+      const key = err.path[0] as string;
+      const message = err.message;
+      errorObject[key] = message;
+    }
+  
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      ...errorObject,
+    }));
+  }
+
+  const formSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+
+    const formValidation = useFormValidation(ruLang);
+
+    formValidation.parse(form);
+
+    const response = await fetch('/api/messageSubmit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({...form, csrfToken}),
+    });
+
+    if (response.ok) {
+
+      const responceData = await response.json();
+      
+      if (
+          responceData.name && 
+          responceData.name === 'ZodError' && 
+          responceData.issues && 
+          responceData.issues.length > 0
+      ) {
+          errorHandler(responceData.issues);
+      }
+
+    } else {
+      throw new Error('Network response was not ok');
+    }
 
     } catch (error: unknown) {
       if (error instanceof ZodError) {
-        const errorObject: Record<string, string> = error.errors.reduce((acc: Record<string, string>, err) => {
-          const key = err.path[0];
-          const message = err.message;
-          acc[key] = message;
-          return acc;
-        }, {});
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          ...errorObject,
-        }));
+        errorHandler(error.errors as ErrorItem[]);
       }
     }
   };
@@ -123,10 +130,8 @@ const useContacts = (ruLang: boolean) => {
     socialList,
     formTexts,
     form,
-    setForm,
     formSubmit,
     errors,
-    cleanErrors,
     changeHandler
   }
 }

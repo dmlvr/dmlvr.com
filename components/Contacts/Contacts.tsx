@@ -7,19 +7,20 @@ import Image from 'next/image'
 import ym from 'react-yandex-metrika';
 import Link from 'next/link';
 
-function Contacts({ ruLang, darkTheme }: Props) {
+function Contacts({ ruLang, darkTheme, csrfToken }: Props & { csrfToken: string }) {
+  
+  console.log(csrfToken);
 
   const { 
     texts,
     socialList,
     formTexts,
     form,
-    setForm,
     formSubmit,
     errors,
-    cleanErrors,
     changeHandler
-  } = useContacts(ruLang);
+  } = useContacts(ruLang, csrfToken);
+
   return (
     <>
     <Head>
@@ -64,8 +65,8 @@ function Contacts({ ruLang, darkTheme }: Props) {
               type='text' 
               placeholder={formTexts.name.placeholder}
               value={form.name}
-              // onChange={(e) => setForm((prev) => ({...prev, name: e.target.value}))} 
               onChange={(e) => changeHandler({name: e.target.value})} 
+              required
             />
             <span style={{color: 'red'}}>{errors.name}</span>
           </label>
@@ -75,8 +76,8 @@ function Contacts({ ruLang, darkTheme }: Props) {
               type='email' 
               placeholder={formTexts.email.placeholder} 
               value={form.email}
-              // onChange={(e) => setForm((prev) => ({...prev, email: e.target.value}))} 
               onChange={(e) => changeHandler({email: e.target.value})} 
+              required
             />
            <span style={{color: 'red'}}>{errors.email}</span>
           </label>
@@ -85,7 +86,6 @@ function Contacts({ ruLang, darkTheme }: Props) {
             <textarea 
               placeholder={formTexts.message.placeholder} 
               value={form.message}
-              // onChange={(e) => setForm((prev) => ({...prev, message: e.target.value}))} 
               onChange={(e) => changeHandler({message: e.target.value})} 
             />
             <span style={{color: 'red'}}>{errors.message}</span>
