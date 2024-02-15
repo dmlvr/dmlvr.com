@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { ZodError } from "zod";
 import nodemailer from 'nodemailer';
-import useFormValidation from '@/utils/formValidation';
+import formValidation from '@/utils/formValidation';
 import { verifyCsrfToken } from '@/utils/csrf'
 
 export default async function handler(
@@ -30,9 +30,9 @@ export default async function handler(
     }
 
     try {
-      const formValidation = useFormValidation(ruLang);
+      const resultFormValidation = formValidation(ruLang);
 
-      formValidation.parse({
+      resultFormValidation.parse({
         name,
         email,
         message

@@ -1,4 +1,4 @@
-import useFormValidation from "@/utils/formValidation";
+import formValidation from "@/utils/formValidation";
 import { useState } from "react";
 import { ZodError } from "zod";
 
@@ -96,9 +96,9 @@ const useForm = (ruLang: boolean, csrfToken: string) => {
     setLoader(true)
     try {
 
-    const formValidation = useFormValidation(ruLang);
+    const resultFormValidation = formValidation(ruLang);
 
-    formValidation.parse(form);
+    resultFormValidation.parse(form);
 
     const response = await fetch('/api/messageSubmit', {
       method: 'POST',

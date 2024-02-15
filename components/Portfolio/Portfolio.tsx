@@ -18,7 +18,7 @@ function Portfolio({ ruLang, darkTheme }: Props) {
         <h1>{texts.title}</h1>
         <ul className={styles['projects']}>
           {projects.map((project) => (
-            <li className={styles['projects__card']}>
+            <li key={project.title} className={styles['projects__card']}>
               <h2 className={styles['title']}>{project.title}</h2>
               <div 
                 className={`

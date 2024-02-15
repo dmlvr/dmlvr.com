@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const useFormValidation = (ruLang: boolean) => {
+const formValidation = (ruLang: boolean) => {
 
   const formValidation = z.object({
     name: z.string().refine(value => value.trim() !== '', {
@@ -26,4 +26,4 @@ const useFormValidation = (ruLang: boolean) => {
   return formValidation;
 }
 
-export default useFormValidation;
+export default formValidation;

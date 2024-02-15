@@ -17,7 +17,7 @@ const setCsrfCookie = (res: NextApiResponse, token: string) => {
 export const getCsrfToken = (req: NextApiRequest) => req.cookies.csrfToken;
 
 // Хук для использования CSRF-токена
-export const useCsrfToken = (req: NextApiRequest, res: NextApiResponse) => {
+export const createCsrfToken = (req: NextApiRequest, res: NextApiResponse) => {
   const token = getCsrfToken(req) || getToken();
   setCsrfCookie(res, token);
   return token;

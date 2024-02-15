@@ -2,7 +2,7 @@ import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next';
 import getSetting from '@/utils/getSetting';
 import { Props } from '@/types/types';
 import Contacts from '@/components/Contacts/Contacts';
-import { useCsrfToken } from '@/utils/csrf';
+import { createCsrfToken } from '@/utils/csrf';
 
 export default function ContactsPage({ 
   ruLang,
@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps<{
 }> = async ({req, res}) => {
 
   const setting = getSetting(req as NextApiRequest);
-  const csrfToken = useCsrfToken(req as NextApiRequest, res as NextApiResponse);
+  const csrfToken = createCsrfToken(req as NextApiRequest, res as NextApiResponse);
 
   return { 
     props: { 
