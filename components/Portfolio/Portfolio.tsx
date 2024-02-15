@@ -42,7 +42,7 @@ function Portfolio({ ruLang, darkTheme }: Props) {
                 project.links.length > 0 &&
                   <div className={styles['links']}>
                     {project.links.map((link) => (
-                      <Link href={link.url}>
+                      <Link key={link.url} href={link.url}>
                       <span>{link.name}</span>
                     </Link>
                     ))}
