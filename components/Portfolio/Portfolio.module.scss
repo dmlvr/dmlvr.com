@@ -25,7 +25,7 @@
   gap: 100px;
 }
 
-.projectCard {
+.projects__card {
   width: 100%;
   display: grid;
   grid-template-columns: 55% 45%;
@@ -79,6 +79,11 @@
   video {
     width: 100%;
     height: auto;
+    border-radius: 16px;
+  }
+
+  &--shadow video {
+    box-shadow: $shadow;
   }
 }
 

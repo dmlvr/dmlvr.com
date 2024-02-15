@@ -13,6 +13,7 @@ const usePortfolio = (ruLang: boolean) => {
       : 'Product catalog for IEK company',
       videoUrls: {
         mp4: '/img/catalog-next.mp4',
+        poster: '/img/next-poster.png'
       },
       videoComment: '',
       details: ruLang
@@ -59,6 +60,7 @@ const usePortfolio = (ruLang: boolean) => {
       : 'Product test results database',
       videoUrls: {
         mp4: '/img/test-list.mp4',
+        poster: '/img/dt-poster.png'
       },
       videoComment: ruLang ? 'Интерфейс записан на моковых данных.' : 'The interface is written on mock data.',
       details: ruLang

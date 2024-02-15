@@ -53,13 +53,13 @@
     transform: translateX(350px);
     z-index: 2;
 
-    &__Open {
+    &--open {
       transform: translateX(0);
     }
   }
 }
 
-.menuList {
+.menu-list {
   @include list-reset;
   display: flex;
   gap: 16px;
@@ -131,14 +131,15 @@
   }
 }
 
-.langSvg {
+.lang-svg {
   transition: 0s;
-  &__Ru {
+  
+  &--ru {
     transform: rotate(180deg);
   }
 }
 
-.mobileNav {
+.mobile-nav {
   display: none;
 
   @include viewport--m {
@@ -150,7 +151,6 @@
     z-index: 3;
     width: 30px;
     height: 30px;
-    // position: relative;
 
     span {
       @include visually-hidden;
@@ -174,7 +174,7 @@
       background-color: var(--primary-color);
     }
 
-    &__Open {
+    &--open {
       &::before {
         top: 50%;
         transform: rotate(45deg);

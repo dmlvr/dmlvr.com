@@ -25,15 +25,15 @@ function Header({
   } = useHeader(ruLang)
 
   return (
-    <header className={styles.header}>
+    <header className={styles['header']}>
       { isMenuOpen && 
         <div 
-          className={styles.underlay}
+          className={styles['underlay']}
           onClick={() => setIsMenuOpen(false)} 
         />
       }
       <Link 
-        className={styles.logo} 
+        className={styles['logo']} 
         href="/"
         onClick={() => setIsMenuOpen(false)}
       >
@@ -43,8 +43,8 @@ function Header({
       </Link>
       <button 
         className={`
-        ${styles.mobileNav}
-        ${isMenuOpen && styles.mobileNav__Open}
+        ${styles['mobile-nav']}
+        ${isMenuOpen && styles['mobile-nav--open']}
       `}
         onClick={() => setIsMenuOpen(prev => !prev)}
       >
@@ -52,11 +52,11 @@ function Header({
       </button>
       <nav 
         className={`
-          ${styles.navigations}
-          ${isMenuOpen && styles.navigations__Open}
+          ${styles['navigations']}
+          ${isMenuOpen && styles['navigations--open']}
         `}
       >
-        <ul className={styles.menuList}>
+        <ul className={styles['menu-list']}>
           {menuItems.map((menuItem) => (
             <li 
               key={menuItem.path} 
@@ -77,11 +77,11 @@ function Header({
         </ul>
         <button 
           onClick={() => ruLangHandler()}
-          className={styles.langs}
+          className={styles['langs']}
         >
           <span>ру</span>
           <svg 
-            className={ruLang ? `${styles.langSvg} ${styles.langSvg__Ru}` : styles.langSvg} 
+            className={`${styles['lang__svg']} ${ruLang && styles['lang__svg--ru']}`} 
             width={36} 
             height={20}
           >
@@ -89,7 +89,7 @@ function Header({
           </svg>
           <span>en</span>
         </button>
-        <div className={styles.theme}>
+        <div className={styles['theme']}>
           <button onClick={() => themeHandler()}>
             <svg width={36} height={20}>
               {darkTheme

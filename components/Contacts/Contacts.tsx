@@ -22,25 +22,24 @@ function Contacts({
   return (
     <>
     <Head>
-      <title>{texts.title}</title>
+      <title>{texts['title']}</title>
     </Head>
-    <main className={styles.container}>
+    <main className={styles['container']}>
       <div 
-        className={styles.image}
-        style={{
-          borderRadius: '16px',
-          boxShadow: darkTheme ? 'none' : '0 5px 25px rgba(0,0,0,.12)'
-        }} 
+        className={`
+          ${styles['image']} 
+          ${!darkTheme && styles['image--shadow']}
+        `}
       >
         <Image alt={texts.title} width={500} height={800} src={'/img/contacts.jpg'} />
       </div>
-      <div className={styles.content}>
+      <div className={styles['content']}>
         <h1>{texts.title}</h1>
         <ul className={styles.social}>
           {socialList.map((item) => (
             <li key={item.name}>
             <Link 
-              className={`${styles.socialLink} ${item.adress && styles.socialLink__email}`}
+              className={`${styles['social__link']} ${item.adress && styles['social__link--email']}`}
               href={item.url}
               onClick={() => ym('reachGoal', item.name)}
             >

@@ -17,24 +17,23 @@ function Main({ ruLang, darkTheme }: Props) {
       <title>{`${texts.name}, ${texts.jobTitle}`}</title>
       <meta name="description" content={`${texts.name}, ${texts.jobTitle} | ${texts.stack}`} />
     </Head>
-    <main className={styles.main}>
+    <main className={styles['main']}>
       <div 
-        className={styles.image}
-        style={{
-          borderRadius: '16px',
-          boxShadow: darkTheme ? 'none' : '0 5px 25px rgba(0,0,0,.12)'
-        }} 
+        className={`
+          ${styles['image']} 
+          ${!darkTheme && styles['image--shadow']}
+        `}
       >
         <Image alt={texts.name} src={`/img/main.png`} width={400} height={400} />
       </div>
-      <div className={styles.content}>
-        <span className={styles.subtitle}>{texts.hello}</span>
-        <h1 className={styles.title}>{texts.name}</h1>
-        <p className={styles.techstack}>{`${texts.jobTitle} | ${texts.stack}`}</p>
-        <p className={styles.about}>{texts.description}</p>
+      <div className={styles['content']}>
+        <span className={styles['subtitle']}>{texts.hello}</span>
+        <h1 className={styles['title']}>{texts.name}</h1>
+        <p className={styles['techstack']}>{`${texts.jobTitle} | ${texts.stack}`}</p>
+        <p className={styles['about']}>{texts.description}</p>
       </div>
       <Link 
-        className={styles.btn} 
+        className={styles['btn']} 
         href={'Dmitry_Lavrinovich_-_Javascript_Developer.pdf'} 
         onClick={() => ym('reachGoal','getCV')}
       >
@@ -43,7 +42,7 @@ function Main({ ruLang, darkTheme }: Props) {
           <use xlinkHref='./img/sprite.svg#polygon' />
         </svg>
       </Link>
-      <ul className={styles.socialList}>
+      <ul className={styles['socialList']}>
         {socialList.map((item) => (
           <li key={item.name}>
           <Link 

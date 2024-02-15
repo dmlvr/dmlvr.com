@@ -12,22 +12,20 @@ function About({darkTheme, ruLang}: Props) {
   return (
     <>
       <Head>
-        <title>{texts.title}</title>
-        {/* <meta name="description" content={`${texts.name}, ${texts.jobTitle} | ${texts.stack}`} /> */}
+        <title>{texts['title']}</title>
       </Head>
-      <main className={styles.about}>
+      <main className={styles['about']}>
         <div 
-          className={styles.image}
-          style={{
-            borderRadius: '16px',
-            boxShadow: darkTheme ? 'none' : '0 5px 25px rgba(0,0,0,.12)'
-          }} 
+          className={`
+            ${styles['image']}
+            ${!darkTheme && styles['image--shadow']}
+          `}
         >
           <Image alt={texts.title} width={500} height={800} src={'/img/about.jpg'} />
         </div>
-        <div className={styles.text}>
+        <div className={styles['text']}>
           <h1>{texts.title}</h1>
-          <div className={styles.paragraps}>
+          <div className={styles['paragraps']}>
             {texts.text}
           </div>      
         </div>

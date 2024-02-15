@@ -22,8 +22,8 @@ function Form({
   return (
     <div 
       className={`
-      ${styles['form__wrapper']} 
-      ${loader && styles['form__wrapper--loader']}
+        ${styles['form__wrapper']} 
+        ${loader && styles['form__wrapper--loader']}
       `}
     >
       {
@@ -44,10 +44,10 @@ function Form({
         )
         : (
           <form 
-            className={styles.form}
+            className={styles['form']}
             onSubmit={formSubmit}
           >
-            <label className={styles.contact}>
+            <label className={styles['contact']}>
               <span>{formTexts.name.label}</span>
               <input 
                 type='text' 
@@ -58,7 +58,7 @@ function Form({
               />
               <span style={{color: 'red'}}>{errors.name}</span>
             </label>
-            <label className={styles.contact}>
+            <label className={styles['contact']}>
               <span>{formTexts.email.label}</span>
               <input 
                 type='email' 
@@ -69,7 +69,7 @@ function Form({
               />
               <span style={{color: 'red'}}>{errors.email}</span>
             </label>
-            <label className={styles.message}>
+            <label className={styles['message']}>
               <span>{formTexts.message.label}</span>
               <textarea 
                 placeholder={formTexts.message.placeholder} 
@@ -79,7 +79,7 @@ function Form({
               <span style={{color: 'red'}}>{errors.message}</span>
             </label>
             <button 
-              className={styles.submit}
+              className={styles['submit']}
               disabled={loader}
             >
               {formTexts.btn}

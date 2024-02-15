@@ -12,26 +12,25 @@ function Portfolio({ ruLang, darkTheme }: Props) {
   return (
     <>
       <Head>
-        <title>{texts.title}</title>
+        <title>{texts['title']}</title>
       </Head>
-      <main className={styles.portfolio}>
+      <main className={styles['portfolio']}>
         <h1>{texts.title}</h1>
-        <ul className={styles.projects}>
+        <ul className={styles['projects']}>
           {projects.map((project) => (
-            <li className={styles.projectCard}>
-              <h2 className={styles.title}>{project.title}</h2>
+            <li className={styles['projects__card']}>
+              <h2 className={styles['title']}>{project.title}</h2>
               <div 
-                className={styles.video}
+                className={`
+                  ${styles['video']}
+                  ${!darkTheme && styles['video--shadow']}
+                `}
               >
                 <video 
                   muted={true} 
                   autoPlay={true} 
                   loop={true} 
-                  style={{
-                    borderRadius: '16px',
-                    boxShadow: darkTheme ? 'none' : '0 5px 20px rgba(0,0,0,.12)'
-                  }} 
-                  poster="./img/Scene_02.png"
+                  // poster={project.videoUrls.poster}
                 >
                   <source src={project.videoUrls.mp4} type="video/mp4"/>
                 </video>
@@ -41,7 +40,7 @@ function Portfolio({ ruLang, darkTheme }: Props) {
                 {project.details}
                 {project.links && 
                 project.links.length > 0 &&
-                  <div className={styles.links}>
+                  <div className={styles['links']}>
                     {project.links.map((link) => (
                       <Link href={link.url}>
                       <span>{link.name}</span>
