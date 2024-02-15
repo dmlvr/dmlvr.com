@@ -6,19 +6,17 @@ import useContacts from './Contacts.controller';
 import Image from 'next/image'
 import ym from 'react-yandex-metrika';
 import Link from 'next/link';
+import Form from '../Form/Form';
 
-function Contacts({ ruLang, darkTheme, csrfToken }: Props & { csrfToken: string }) {
+function Contacts({ 
+  ruLang, 
+  darkTheme, 
+  csrfToken 
+}: Props & { csrfToken: string }) {
   
-  console.log(csrfToken);
-
   const { 
     texts,
     socialList,
-    formTexts,
-    form,
-    formSubmit,
-    errors,
-    changeHandler
   } = useContacts(ruLang, csrfToken);
 
   return (
@@ -55,43 +53,11 @@ function Contacts({ ruLang, darkTheme, csrfToken }: Props & { csrfToken: string 
           ))}
         </ul>
         <p>{texts.paragraph}</p>
-        <form 
-          className={styles.form}
-          onSubmit={formSubmit}
-        >
-          <label className={styles.contact}>
-            <span>{formTexts.name.label}</span>
-            <input 
-              type='text' 
-              placeholder={formTexts.name.placeholder}
-              value={form.name}
-              onChange={(e) => changeHandler({name: e.target.value})} 
-              required
-            />
-            <span style={{color: 'red'}}>{errors.name}</span>
-          </label>
-          <label className={styles.contact}>
-            <span>{formTexts.email.label}</span>
-            <input 
-              type='email' 
-              placeholder={formTexts.email.placeholder} 
-              value={form.email}
-              onChange={(e) => changeHandler({email: e.target.value})} 
-              required
-            />
-           <span style={{color: 'red'}}>{errors.email}</span>
-          </label>
-          <label className={styles.message}>
-            <span>{formTexts.message.label}</span>
-            <textarea 
-              placeholder={formTexts.message.placeholder} 
-              value={form.message}
-              onChange={(e) => changeHandler({message: e.target.value})} 
-            />
-            <span style={{color: 'red'}}>{errors.message}</span>
-          </label>
-          <button className={styles.submit}>{formTexts.btn}</button>
-        </form>
+        <Form 
+          ruLang={ruLang} 
+          csrfToken={csrfToken} 
+          darkTheme={darkTheme} 
+        />
       </div>
     </main>
   </>

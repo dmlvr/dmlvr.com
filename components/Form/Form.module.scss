@@ -1,0 +1,108 @@
+@import '@/styles/mixin.scss';
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.form__wrapper {
+  position: relative;
+
+  &--loader {
+    &::before {
+      content: '';
+      position: absolute;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      background-color: transparent;
+      top: -10px;
+      left: -10px;
+      border-radius: 16px;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - 100px);
+      left: calc(50% - 100px);
+      border: 8px solid var(--secondary-color);
+      border-top: 8px solid var(--primary-color);
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      animation: spin 1.5s linear infinite;
+      z-index: 2;
+    }
+  }
+}
+
+
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  input, textarea {
+    @include btn-reset;
+    padding: 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 16px;
+    font-size: 16px;
+    color: var(--primary-color);
+    font-family: 'Inter', sans-serif;
+
+    &:focus {
+      outline: 1px solid var(--primary-color);
+    }
+  }
+}
+
+.contact {
+  width: calc(50% - 16px);
+
+  @include viewport(700px) {
+    width: 100%;
+  }
+}
+
+.message {
+  width: 100%;
+  
+  textarea {
+    min-height: 25vh
+  }
+}
+
+.submit {
+  @include btn;
+}
+
+.form__answer {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  h2, p {
+    @include indents-reset;
+  }
+
+  button {
+    @include btn;
+  }
+
+  &--error {
+    h2 {
+      color: red;
+    }
+  }
+}

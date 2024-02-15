@@ -88,6 +88,11 @@
     background-color: var(--secondary-color);
     box-shadow: 0 5px 5px var(--secondary-color);
   }
+
+  &:disabled {
+    color: var(--secondary-color);
+    opacity: 0.5;
+  }
 }
 
 @mixin visually-hidden {
