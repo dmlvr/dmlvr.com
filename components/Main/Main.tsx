@@ -9,7 +9,11 @@ import Head from 'next/head';
 
 function Main({ ruLang, darkTheme }: Props) {
 
-  const { texts, socialList } = useMain({ ruLang })
+  const { 
+    texts, 
+    socialList,
+    cvLink 
+  } = useMain(ruLang)
 
   return (
     <>
@@ -34,7 +38,7 @@ function Main({ ruLang, darkTheme }: Props) {
       </div>
       <Link 
         className={styles['btn']} 
-        href={'Dmitry_Lavrinovich_-_Javascript_Developer.pdf'} 
+        href={cvLink} 
         onClick={() => ym('reachGoal','getCV')}
       >
         <span>{texts.btn}</span>
