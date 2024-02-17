@@ -7,12 +7,12 @@ import Link from 'next/link';
 
 function Portfolio({ ruLang, darkTheme }: Props) {
 
-  const { texts, projects } = usePortfolio(ruLang);
+  const { texts, projects, personalData } = usePortfolio(ruLang);
 
   return (
     <>
       <Head>
-        <title>{texts['title']}</title>
+      <title>{`${texts.title} | ${personalData.name}, ${personalData.jobTitle}`}</title>
       </Head>
       <main className={styles['portfolio']}>
         <h1>{texts.title}</h1>

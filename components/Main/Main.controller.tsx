@@ -1,4 +1,5 @@
 import { socialList } from '@/constants'
+import usePersonalData from '@/hooks/usePersonalData';
 
 const useMain = (ruLang: boolean) => {
 
@@ -6,29 +7,20 @@ const useMain = (ruLang: boolean) => {
     hello: ruLang
     ? 'Привет, меня зовут'
     : 'Hello, I am',
-    name: ruLang
-    ? 'Дмитрий Лавринович'
-    : 'Dmitry Lavrinovich',
-    jobTitle: ruLang
-    ? 'JavaScript разработчик'
-    : 'JavaScript developer',
-    stack: 'React, Next.js, Node.js, Fastify, Express, Docker, Directus, PostrgeSQL, Redux, HTML5, CSS3/LESS/SASS',
     description: ruLang
-    ? <>JavaScript разработчик. 3 года опыта в индустрии.<br/>Навыки командной работы.</>
+    ? <>JavaScript разработчик. 3 года опыта коммерческой разработки.<br/>Навыки командной работы.</>
     : <>JavaScript Developer with a demonstrated history of working in the industry.<br/>3 years experience.</>,
     btn: ruLang
     ? 'Смотреть CV'
     : 'Explore CV',
   }
 
-  const cvLink = ruLang
-    ? 'Dmitry_Lavrinovich_-_Javascript_Developer-ru.pdf'
-    : 'Dmitry_Lavrinovich_-_Javascript_Developer-en.pdf'
+  const personalData = usePersonalData(ruLang);
 
   return {
     texts,
     socialList,
-    cvLink
+    personalData
   }
 }
 

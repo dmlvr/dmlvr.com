@@ -12,14 +12,13 @@ function Main({ ruLang, darkTheme }: Props) {
   const { 
     texts, 
     socialList,
-    cvLink 
+    personalData 
   } = useMain(ruLang)
 
   return (
     <>
     <Head>
-      <title>{`${texts.name}, ${texts.jobTitle}`}</title>
-      <meta name="description" content={`${texts.name}, ${texts.jobTitle} | ${texts.stack}`} />
+      <title>{`${personalData.name}, ${personalData.jobTitle}`}</title>
     </Head>
     <main className={styles['main']}>
       <div 
@@ -28,17 +27,17 @@ function Main({ ruLang, darkTheme }: Props) {
           ${!darkTheme && styles['image--shadow']}
         `}
       >
-        <Image alt={texts.name} src={`/img/main.png`} width={400} height={400} />
+        <Image alt={personalData.name} src={`/img/main.png`} width={400} height={400} />
       </div>
       <div className={styles['content']}>
         <span className={styles['subtitle']}>{texts.hello}</span>
-        <h1 className={styles['title']}>{texts.name}</h1>
-        <p className={styles['techstack']}>{`${texts.jobTitle} | ${texts.stack}`}</p>
+        <h1 className={styles['title']}>{personalData.name}</h1>
+        <p className={styles['techstack']}>{`${personalData.jobTitle} | ${personalData.stack}`}</p>
         <p className={styles['about']}>{texts.description}</p>
       </div>
       <Link 
         className={styles['btn']} 
-        href={cvLink} 
+        href={personalData.cvLink} 
         onClick={() => ym('reachGoal','getCV')}
       >
         <span>{texts.btn}</span>

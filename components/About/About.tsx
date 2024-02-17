@@ -7,12 +7,12 @@ import Head from 'next/head'
 
 function About({darkTheme, ruLang}: Props) {
 
-  const { texts } = useAbout(ruLang)
+  const { texts, personalData } = useAbout(ruLang)
 
   return (
     <>
       <Head>
-        <title>{texts['title']}</title>
+      <title>{`${texts.title} | ${personalData.name}, ${personalData.jobTitle}`}</title>
       </Head>
       <main className={styles['about']}>
         <div 

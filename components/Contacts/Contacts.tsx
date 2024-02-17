@@ -11,18 +11,19 @@ import Form from '../Form/Form';
 function Contacts({ 
   ruLang, 
   darkTheme, 
-  csrfToken 
+  csrfToken,
 }: Props & { csrfToken: string }) {
   
   const { 
     texts,
     socialList,
+    personalData
   } = useContacts(ruLang, csrfToken);
 
   return (
     <>
     <Head>
-      <title>{texts['title']}</title>
+      <title>{`${texts.title} | ${personalData.name}, ${personalData.jobTitle}`}</title>
     </Head>
     <main className={styles['container']}>
       <div 

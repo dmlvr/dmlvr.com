@@ -1,3 +1,5 @@
+import usePersonalData from "@/hooks/usePersonalData";
+
 const usePortfolio = (ruLang: boolean) => {
 
   const texts = {
@@ -90,9 +92,12 @@ const usePortfolio = (ruLang: boolean) => {
     },
   ]
 
+  const personalData = usePersonalData(ruLang);
+
   return {
     texts,
-    projects
+    projects,
+    personalData
   }
 }
 

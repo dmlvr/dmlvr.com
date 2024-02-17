@@ -1,4 +1,5 @@
 import { socialList } from '@/constants'
+import usePersonalData from '@/hooks/usePersonalData';
 import useFormValidation from '@/utils/formValidation';
 import { useState } from 'react'
 import { ZodError } from "zod";
@@ -14,9 +15,12 @@ const useContacts = (ruLang: boolean, csrfToken: string) => {
     : 'Answer quickly in telegram. I check my email and LinkedIn some times a week. You can email me directly from the site.'
   }
 
+  const personalData = usePersonalData(ruLang);
+
   return {
     texts,
     socialList,
+    personalData
   }
 }
 

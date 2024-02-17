@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import YM from '@/components/YM';
 import Head from 'next/head';
 import { useColors } from '@/hooks/useColors';
+import usePersonalData from '@/hooks/usePersonalData';
 
 export default function App({ Component, pageProps }: AppProps) {
     const { cookiesRuLang } = pageProps ?? false;
@@ -35,11 +36,13 @@ export default function App({ Component, pageProps }: AppProps) {
     }
 
     useColors(darkTheme);
+    const personalData = usePersonalData(ruLang);
 
   return (
     <div className='main'>
       <Head>
         <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+        <meta name="description" content={`${personalData.name}, ${personalData.jobTitle} | ${personalData.stack}`} />
       </Head>
       <YM />
       <Header darkTheme={darkTheme} themeHandler={themeHandler} ruLang={ruLang} ruLangHandler={ruLangHandler} />
