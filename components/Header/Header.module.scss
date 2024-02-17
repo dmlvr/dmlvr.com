@@ -38,11 +38,11 @@
   flex-grow: 1;
 
   @include viewport--m {
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     width: 320px;
-    height: 100vh;
+    height: 100svh;
     flex-direction: column;
     padding: 19px 30px;
     justify-content: flex-start;
@@ -143,9 +143,10 @@
   display: none;
 
   @include viewport--m {
+
     @include btn-reset;
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 19px;
     right: 19px;
     z-index: 3;

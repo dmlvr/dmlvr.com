@@ -30,7 +30,8 @@ function Portfolio({ ruLang, darkTheme }: Props) {
                   muted={true} 
                   autoPlay={true} 
                   loop={true} 
-                  // poster={project.videoUrls.poster}
+                  controls={false}
+                  playsInline={true}
                 >
                   <source src={project.videoUrls.mp4} type="video/mp4"/>
                 </video>

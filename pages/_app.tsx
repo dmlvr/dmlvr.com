@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
     useColors(darkTheme);
 
   return (
-    <>
+    <div className='main'>
       <Head>
         <link rel="icon" href="favicon.svg" type="image/svg+xml" />
       </Head>
@@ -48,6 +48,6 @@ export default function App({ Component, pageProps }: AppProps) {
         ruLang={ruLang} 
         {...pageProps} 
       />
-    </>
+    </div>
   )
 }
