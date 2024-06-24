@@ -1,0 +1,1 @@
+export const DIRECTUS_API_URL = process.env.DIRECTUS_API_URL ?? 'http://localhost:3462'

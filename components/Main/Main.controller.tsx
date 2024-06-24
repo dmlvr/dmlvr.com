@@ -1,4 +1,4 @@
-import { socialList } from '@/constants'
+import { socialList } from '@/const'
 import usePersonalData from '@/hooks/usePersonalData';
 
 const useMain = (ruLang: boolean) => {

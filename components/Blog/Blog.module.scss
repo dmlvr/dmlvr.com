@@ -1,0 +1,10 @@
+@import '@/styles/mixin.scss';
+@import '@/styles/variables.scss';
+
+.main {
+  @include main;
+}
+
+.title {
+  color: var(--primary-color);
+}

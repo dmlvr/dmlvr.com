@@ -1,4 +1,4 @@
-export const  socialList = [
+export const socialList = [
   {
     name: 'telegram',
     url: 'https://t.me/dmlvr',
