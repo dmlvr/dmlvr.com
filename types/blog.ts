@@ -1,13 +1,14 @@
-import { Setting } from "./setting"
+import { Setting } from "./setting";
 
 export type BlogProps = Setting & {
-  posts?: Post[]; // массив постов
-  error?: string; // строка ошибки
-}
+  posts?: Post[];
+  error?: string;
+};
 
 export type Post = {
-  title: string,
-  status: string,
-  content: string,
-  publication_date: string
-}
+  title: string;
+  publication_date: string;
+  excerpt: string;
+  main_photo: string;
+  id: string;
+};

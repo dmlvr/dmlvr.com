@@ -1,12 +1,14 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  output: 'standalone',
-  async rewrites() {
-    return [
+  output: "standalone",
+  images: {
+    remotePatterns: [
       {
-        source: '/promo/bp',
-        destination: '/promo/bp/index.html', // Путь к вашим React-страницам
+        protocol: "http",
+        hostname: "localhost",
+        port: "3462",
+        pathname: "**",
       },
-    ];
+    ],
   },
-}
+};

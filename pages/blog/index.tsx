@@ -1,37 +1,26 @@
-import { GetServerSideProps, NextApiRequest } from 'next';
-import getSetting from '@/utils/getSetting';
-import { BlogProps, Post } from '@/types';
-import { getClient } from '@/utils';
-import { readItems } from '@directus/sdk';
-import Blog from '@/components/Blog/Blog';
+import { GetServerSideProps, NextApiRequest } from "next";
+import getSetting from "@/utils/getSetting";
+import { BlogProps, Post } from "@/types";
+import { getClient } from "@/utils";
+import { readItems } from "@directus/sdk";
+import Blog from "@/components/Blog/Blog";
 
 export default function Page(props: BlogProps) {
-
-  const {
-    darkTheme,
-    ruLang,
-    error,
-    posts
-  } = props
+  const { darkTheme, ruLang, error, posts } = props;
 
   if (error) {
-    return (
-      <h1>Произошла ошибка</h1>
-    )
+    return <h1>Произошла ошибка</h1>;
   }
 
-  return (
-    <Blog darkTheme={darkTheme} ruLang={ruLang} posts={posts} />
-  )
+  return <Blog darkTheme={darkTheme} ruLang={ruLang} posts={posts} />;
 }
 
-export const getServerSideProps: GetServerSideProps<{ 
-  cookiesDarkTheme: boolean | null,
-  cookiesRuLang: boolean
-  error?: string,
-  posts?: any,
-}> = async ({req}) => {
-
+export const getServerSideProps: GetServerSideProps<{
+  cookiesDarkTheme: boolean | null;
+  cookiesRuLang: boolean;
+  error?: string;
+  posts?: any;
+}> = async ({ req }) => {
   const setting = getSetting(req as NextApiRequest);
 
   const { client, isClient } = getClient();
@@ -40,38 +29,36 @@ export const getServerSideProps: GetServerSideProps<{
     return {
       props: {
         ...setting,
-        error: 'Ошибка доступа, свяжитесь с администратором.',
+        error: "Ошибка доступа, свяжитесь с администратором.",
       },
     };
   }
 
   try {
-
     const posts = (await client.request(
-      readItems('Posts' as any, {
-        fields: ['title', 'content', 'publication_date', 'status'],
+      readItems("Posts" as any, {
+        fields: ["id", "title", "publication_date", "excerpt", "main_photo"],
         filter: {
           status: {
-            _eq: "published"
-          }
-        }
-      }),
+            _eq: "published",
+          },
+        },
+      })
     )) as Post[];
 
     return {
       props: {
         ...setting,
-        posts
+        posts,
       },
     };
-
   } catch (error) {
     console.log(error);
     return {
       props: {
         ...setting,
-        error: 'Ошибка с запросом данных.'
+        error: "Ошибка с запросом данных.",
       },
     };
   }
-}
+};
