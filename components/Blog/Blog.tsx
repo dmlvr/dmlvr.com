@@ -23,7 +23,7 @@ function Blog(props: BlogProps) {
             {posts.map((post) => {
               const date = formatDateString(post.publication_date);
               return (
-                <li className={styles["post-item"]}>
+                <li key={post.id} className={styles["post-item"]}>
                   <Link
                     href={`blog/${post.id}`}
                     className={styles["post-link"]}
