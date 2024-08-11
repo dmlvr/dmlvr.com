@@ -14,8 +14,9 @@ export type PostProps = Setting & {
 export type PostType = {
   title: string;
   publication_date: string;
-  excerpt: string;
+  preview: string;
   main_photo: string;
   id: string;
   content: string;
+  test_content: any;
 };

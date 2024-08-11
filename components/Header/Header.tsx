@@ -52,7 +52,9 @@ function Header({ darkTheme, themeHandler, ruLang, ruLangHandler }: Props) {
             <li
               key={menuItem.path}
               style={{
-                fontWeight: currentPath === menuItem.path ? "bold" : "normal",
+                fontWeight: currentPath.includes(menuItem.path)
+                  ? "bold"
+                  : "normal",
               }}
               onClick={() => setIsMenuOpen(false)}
             >

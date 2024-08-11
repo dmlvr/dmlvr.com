@@ -1,4 +1,6 @@
-export function formatDateString(dateString: string): string | null {
+export function formatDateString(
+  dateString: string | undefined
+): string | null {
   if (!dateString || typeof dateString !== "string") {
     return null;
   }

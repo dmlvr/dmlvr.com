@@ -4,9 +4,12 @@ import styles from "./Blog.module.scss";
 import { BlogProps } from "@/types";
 import Link from "next/link";
 import { formatDateString } from "@/utils";
+import OnlyRuLang from "../OnlyRuLang/OnlyRuLang";
 
 function Blog(props: BlogProps) {
-  const { posts } = props;
+  const { posts, ruLang } = props;
+
+  console.log(posts);
 
   return (
     <>
@@ -15,7 +18,7 @@ function Blog(props: BlogProps) {
       </Head>
       <main className={styles["main"]}>
         <h1 className={styles["title"]}>Блог</h1>
-        {posts && posts.length > 0 && (
+        {posts && posts.length > 0 ? (
           <ul className={styles["posts-list"]}>
             {posts.map((post) => {
               const date = formatDateString(post.publication_date);
@@ -31,10 +34,10 @@ function Blog(props: BlogProps) {
                         <span className={styles["post-date"]}>{date}</span>
                       )}
                     </div>
-                    {post.excerpt && (
+                    {post.preview && (
                       <div
-                        className={styles["post-excerpt"]}
-                        dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                        className={styles["post-preview"]}
+                        dangerouslySetInnerHTML={{ __html: post.preview }}
                       />
                     )}
                     {post.main_photo && (
@@ -52,7 +55,10 @@ function Blog(props: BlogProps) {
               );
             })}
           </ul>
+        ) : (
+          <p>Тут пока пусто, но совсем скоро тут появяться посты.</p>
         )}
+        {!ruLang && <OnlyRuLang />}
       </main>
     </>
   );
