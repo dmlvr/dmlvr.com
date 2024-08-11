@@ -1,4 +1,4 @@
-export type Props = {
+export type Setting = {
   darkTheme: boolean;
   ruLang: boolean;
 }

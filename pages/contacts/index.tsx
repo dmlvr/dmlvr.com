@@ -1,36 +1,27 @@
-import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next';
-import getSetting from '@/utils/getSetting';
-import { Props } from '@/types/types';
-import Contacts from '@/components/Contacts/Contacts';
-import { createCsrfToken } from '@/utils/csrf';
+import { GetServerSideProps, NextApiRequest, NextApiResponse } from "next";
+import { getSetting } from "@/utils";
+import { Setting } from "@/types";
+import Contacts from "@/components/Contacts/Contacts";
+import { createCsrfToken } from "@/utils/csrf";
 
-export default function ContactsPage({ 
-  ruLang,
-  darkTheme, 
-  csrfToken
- }: Props & { csrfToken: string }) {
-
-  return (
-    <Contacts 
-      ruLang={ruLang} 
-      darkTheme={darkTheme} 
-      csrfToken={csrfToken}
-    />
-  )
+export default function ContactsPage(props: Setting & { csrfToken: string }) {
+  return <Contacts {...props} />;
 }
 
-export const getServerSideProps: GetServerSideProps<{ 
-  cookiesDarkTheme: boolean | null,
-  cookiesRuLang: boolean
-}> = async ({req, res}) => {
-
+export const getServerSideProps: GetServerSideProps<{
+  cookiesDarkTheme: boolean | null;
+  cookiesRuLang: boolean;
+}> = async ({ req, res }) => {
   const setting = getSetting(req as NextApiRequest);
-  const csrfToken = createCsrfToken(req as NextApiRequest, res as NextApiResponse);
+  const csrfToken = createCsrfToken(
+    req as NextApiRequest,
+    res as NextApiResponse
+  );
 
-  return { 
-    props: { 
+  return {
+    props: {
       ...setting,
-      csrfToken
-    } 
+      csrfToken,
+    },
   };
-}
+};

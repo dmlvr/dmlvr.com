@@ -3,11 +3,11 @@ import styles from './Main.module.scss';
 import Image from 'next/image'
 import Link from 'next/link';
 import ym from 'react-yandex-metrika';
-import { Props } from '@/types/types'
+import { Setting } from '@/types'
 import useMain from './Main.controller';
 import Head from 'next/head';
 
-function Main({ ruLang, darkTheme }: Props) {
+function Main({ ruLang, darkTheme }: Setting) {
 
   const { 
     texts, 
