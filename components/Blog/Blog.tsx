@@ -21,7 +21,10 @@ function Blog(props: BlogProps) {
               const date = formatDateString(post.publication_date);
               return (
                 <li className={styles["post-item"]}>
-                  <Link href={post.id} className={styles["post-link"]}>
+                  <Link
+                    href={`blog/${post.id}`}
+                    className={styles["post-link"]}
+                  >
                     <div className={styles["post-meta"]}>
                       <p className={styles["post-title"]}>{post.title}</p>
                       {date && (

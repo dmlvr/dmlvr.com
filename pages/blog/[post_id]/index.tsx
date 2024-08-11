@@ -1,31 +1,37 @@
 import { GetServerSideProps, NextApiRequest } from "next";
 import getSetting from "@/utils/getSetting";
-import { BlogProps, PostType } from "@/types";
+import { PostType, PostProps } from "@/types";
 import { getClient } from "@/utils";
-import { readItems } from "@directus/sdk";
-import Blog from "@/components/Blog/Blog";
+import { readItem, readItems } from "@directus/sdk";
+import Post from "@/components/Post/Post";
 
-export default function Page(props: BlogProps) {
-  const { darkTheme, ruLang, error, posts } = props;
+export default function Page(props: PostProps) {
+  const { darkTheme, ruLang, error, post, post_id } = props;
+
+  console.log(post);
 
   if (error) {
     return <h1>Произошла ошибка</h1>;
   }
 
-  return <Blog darkTheme={darkTheme} ruLang={ruLang} posts={posts} />;
+  return (
+    <Post darkTheme={darkTheme} ruLang={ruLang} post={post} post_id={post_id} />
+  );
 }
 
 export const getServerSideProps: GetServerSideProps<{
   cookiesDarkTheme: boolean | null;
   cookiesRuLang: boolean;
   error?: string;
-  posts?: any;
-}> = async ({ req }) => {
+  post?: any;
+}> = async ({ params, req }) => {
   const setting = getSetting(req as NextApiRequest);
+
+  const post_id = params?.post_id as string;
 
   const { client, isClient } = getClient();
 
-  if (!isClient) {
+  if (!isClient || !post_id) {
     return {
       props: {
         ...setting,
@@ -35,22 +41,17 @@ export const getServerSideProps: GetServerSideProps<{
   }
 
   try {
-    const posts = (await client.request(
-      readItems("Posts" as any, {
-        fields: ["id", "title", "publication_date", "excerpt", "main_photo"],
-        filter: {
-          status: {
-            _eq: "published",
-          },
-        },
-        sort: ["-publication_date"],
+    const post = (await client.request(
+      readItem("Posts" as any, post_id, {
+        fields: ["title", "publication_date", "content", "main_photo"],
       })
     )) as PostType[];
 
     return {
       props: {
         ...setting,
-        posts,
+        post,
+        post_id,
       },
     };
   } catch (error) {

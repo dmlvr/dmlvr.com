@@ -7,6 +7,7 @@
 }
 
 .title {
+  @include indents-reset;
   color: var(--primary-color);
   font-size: 48px;
   font-weight: 700;
@@ -56,6 +57,12 @@
 
 .post-excerpt {
   margin-top: 2rem;
+  line-height: 1.8em;
+
+  p {
+    @include indents-reset;
+    margin-top: 1rem;
+  }
 }
 
 .image {
