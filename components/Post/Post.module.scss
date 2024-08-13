@@ -4,6 +4,7 @@
 .main {
   @include main;
   color: var(--primary-color);
+  @include custom-scrollbar;
 }
 
 .title {
