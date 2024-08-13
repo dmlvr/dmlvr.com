@@ -4,51 +4,56 @@
 .main {
   @include main;
   color: var(--primary-color);
+  @include custom-scrollbar;
 }
 
 .title {
-  @include indents-reset;
-  color: var(--primary-color);
-  font-size: 48px;
-  font-weight: 700;
-  letter-spacing: -1.92px;
-  margin-bottom: 3rem;
-  transition: 0.3s;
+  // @include indents-reset;
+  // color: var(--primary-color);
+  // font-size: 48px;
+  // font-weight: 700;
+  // letter-spacing: -1.92px;
+  // margin-bottom: 3rem;
+  // transition: 0.3s;
+  @include visually-hidden;
 }
 
 .posts-list {
   @include list-reset;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
+
+  @include viewport--m {
+    flex-direction: column;
+  }
 }
 
 .post-item {
-  display: flex;
-  width: 100%;
-  height: 100%;
+  width: calc(50% - 1rem);
+
+  @include viewport--m {
+    width: 100%;
+  }
 }
 
 .post-link {
   width: 100%;
+  height: 100%;
   color: var(--primary-color);
   padding: 2rem;
   background-color: rgba($secondary-color, 0.1);
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
   &:hover {
     background-color: rgba($secondary-color, 0.2);
   }
-}
-
-.post-meta {
-  display: flex;
-  align-items: center;
 
   @include viewport--m {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    padding: 1rem;
   }
 }
 
@@ -58,11 +63,8 @@
 }
 
 .post-date {
-  margin-left: auto;
-
-  @include viewport--m {
-    margin-left: 0;
-  }
+  margin-top: 8px;
+  font-size: 13px;
 }
 
 .post-preview {
@@ -71,18 +73,19 @@
 
   p {
     @include indents-reset;
-    margin-top: 1rem;
   }
 }
 
 .image {
   margin-top: 2rem;
-  width: 100%;
+  flex-grow: 1;
+  display: flex;
 
   img {
-    height: 50vh;
+    display: flex;
     width: 100%;
-    border-radius: 8px;
+    aspect-ratio: 1/0.9;
     object-fit: cover;
+    border-radius: 8px;
   }
 }

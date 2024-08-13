@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./Post.module.scss";
 import { formatDateString } from "@/utils";
 import OnlyRuLang from "../OnlyRuLang/OnlyRuLang";
-import { Gallery } from "react-grid-gallery";
 import PostGallery from "../Gallery/PostGallery";
 
 function Post(props: PostProps) {

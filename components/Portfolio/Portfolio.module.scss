@@ -1,4 +1,4 @@
-@import '@/styles/mixin.scss';
+@import "@/styles/mixin.scss";
 
 .portfolio {
   @include main;
@@ -9,12 +9,10 @@
   color: var(--primary-color);
   height: calc(100svh - 90px);
   overflow-y: auto;
-  overflow-x: hidden;
-
+  @include custom-scrollbar;
   h1 {
     @include visually-hidden;
   }
-  
 }
 
 .projects {
@@ -117,7 +115,6 @@
     padding-right: 0;
   }
 }
-
 
 .links {
   margin-top: 32px;

@@ -26,12 +26,10 @@ function Blog(props: BlogProps) {
                     href={`blog/${post.id}`}
                     className={styles["post-link"]}
                   >
-                    <div className={styles["post-meta"]}>
-                      <p className={styles["post-title"]}>{post.title}</p>
-                      {date && (
-                        <span className={styles["post-date"]}>{date}</span>
-                      )}
-                    </div>
+                    <p className={styles["post-title"]}>{post.title}</p>
+                    {date && (
+                      <span className={styles["post-date"]}>{date}</span>
+                    )}
                     {post.preview && (
                       <div
                         className={styles["post-preview"]}

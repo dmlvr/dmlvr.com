@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import "variables.scss";
 
 @mixin viewport--xl {
   @media (max-width: ($xl-width)) {
@@ -30,7 +30,7 @@
   margin-right: auto;
   padding-left: 75px;
   padding-right: 75px;
-  
+
   @include viewport--xl {
     width: $l-width;
     padding-left: 30px;
@@ -109,7 +109,7 @@
   text-overflow: ellipsis;
 }
 
-@mixin veritical-line-clamp ($size: 3, $height: 4.5em) {
+@mixin veritical-line-clamp($size: 3, $height: 4.5em) {
   max-height: $height;
   color: #000000;
   overflow: hidden;
@@ -123,6 +123,7 @@
   padding-top: 40px;
   padding-bottom: 40px;
   height: calc(100vh - 90px);
+  overflow-y: auto;
 
   @include viewport--m {
     padding-top: 20px;
@@ -138,11 +139,11 @@
   &::-webkit-scrollbar {
     width: 4px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: var(--tertiary-color);
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background-color: var(--primary-color);
     border-radius: 8px;
