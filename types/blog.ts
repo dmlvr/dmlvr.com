@@ -1,3 +1,4 @@
+import { string } from "zod";
 import { Setting } from "./setting";
 
 export type BlogProps = Setting & {
@@ -6,7 +7,7 @@ export type BlogProps = Setting & {
 };
 
 export type PostProps = Setting & {
-  post?: PostType;
+  post: PostType;
   error?: string;
   post_id: string;
 };
@@ -18,5 +19,13 @@ export type PostType = {
   main_photo: string;
   id: string;
   content: string;
-  test_content: any;
+  gallery: PostGalleryType[];
+};
+
+export type PostGalleryType = {
+  directus_files_id: {
+    id: string;
+    width: number;
+    height: number;
+  };
 };

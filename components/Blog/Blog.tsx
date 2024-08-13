@@ -5,12 +5,10 @@ import { BlogProps } from "@/types";
 import Link from "next/link";
 import { formatDateString } from "@/utils";
 import OnlyRuLang from "../OnlyRuLang/OnlyRuLang";
+import { DIRECTUS_API_URL } from "@/const";
 
 function Blog(props: BlogProps) {
   const { posts, ruLang } = props;
-
-  console.log(posts);
-
   return (
     <>
       <Head>
@@ -45,7 +43,7 @@ function Blog(props: BlogProps) {
                         <img
                           width={300}
                           height={300}
-                          src={`http://localhost:3462/assets/${post.main_photo}/image.png`}
+                          src={`${DIRECTUS_API_URL}/assets/${post.main_photo}/image.png`}
                           alt={post.title}
                         />
                       </div>

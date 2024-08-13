@@ -1,54 +1,54 @@
-import { Props } from '@/types/types';
-import Head from 'next/head';
-import React from 'react';
-import styles from './Portfolio.module.scss'
-import usePortfolio from './Portfolio.controller';
-import Link from 'next/link';
+import { Setting } from "@/types";
+import Head from "next/head";
+import React from "react";
+import styles from "./Portfolio.module.scss";
+import usePortfolio from "./Portfolio.controller";
+import Link from "next/link";
 
-function Portfolio({ ruLang, darkTheme }: Props) {
-
+function Portfolio({ ruLang, darkTheme }: Setting) {
   const { texts, projects, personalData } = usePortfolio(ruLang);
 
   return (
     <>
       <Head>
-      <title>{`${texts.title} | ${personalData.name}, ${personalData.jobTitle}`}</title>
+        <title>{`${texts.title} | ${personalData.name}, ${personalData.jobTitle}`}</title>
       </Head>
-      <main className={styles['portfolio']}>
+      <main className={styles["portfolio"]}>
         <h1>{texts.title}</h1>
-        <ul className={styles['projects']}>
+        <ul className={styles["projects"]}>
           {projects.map((project) => (
-            <li key={project.title} className={styles['projects__card']}>
-              <h2 className={styles['title']}>{project.title}</h2>
-              <div 
+            <li key={project.title} className={styles["projects__card"]}>
+              <h2 className={styles["title"]}>{project.title}</h2>
+              <div
                 className={`
-                  ${styles['video']}
-                  ${!darkTheme && styles['video--shadow']}
+                  ${styles["video"]}
+                  ${!darkTheme && styles["video--shadow"]}
                 `}
               >
-                <video 
-                  muted={true} 
-                  autoPlay={true} 
-                  loop={true} 
+                <video
+                  muted={true}
+                  autoPlay={true}
+                  loop={true}
                   controls={false}
                   playsInline={true}
                 >
-                  <source src={project.videoUrls.mp4} type="video/mp4"/>
+                  <source src={project.videoUrls.mp4} type="video/mp4" />
                 </video>
-                {project.videoComment.length > 0 && <span>{project.videoComment}</span>}
+                {project.videoComment.length > 0 && (
+                  <span>{project.videoComment}</span>
+                )}
               </div>
               <div className={styles.texts}>
                 {project.details}
-                {project.links && 
-                project.links.length > 0 &&
-                  <div className={styles['links']}>
+                {project.links && project.links.length > 0 && (
+                  <div className={styles["links"]}>
                     {project.links.map((link) => (
                       <Link key={link.url} href={link.url}>
-                      <span>{link.name}</span>
-                    </Link>
+                        <span>{link.name}</span>
+                      </Link>
                     ))}
                   </div>
-                }
+                )}
               </div>
             </li>
           ))}

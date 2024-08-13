@@ -31,6 +31,9 @@ export const getServerSideProps: GetServerSideProps = async ({
           "content",
           "main_photo",
           "preview",
+          "gallery.directus_files_id.id",
+          "gallery.directus_files_id.width",
+          "gallery.directus_files_id.height",
         ],
       })
     )) as PostType[];

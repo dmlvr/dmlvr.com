@@ -6,8 +6,6 @@ export default function useOnlyRuLang() {
   useEffect(() => {
     const storedData = localStorage.getItem("isShowMsg");
 
-    console.log(storedData);
-
     if (!storedData) {
       setIsShowMsg(true);
       return;

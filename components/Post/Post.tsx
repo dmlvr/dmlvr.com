@@ -4,6 +4,8 @@ import React from "react";
 import styles from "./Post.module.scss";
 import { formatDateString } from "@/utils";
 import OnlyRuLang from "../OnlyRuLang/OnlyRuLang";
+import { Gallery } from "react-grid-gallery";
+import PostGallery from "../Gallery/PostGallery";
 
 function Post(props: PostProps) {
   const { post, ruLang } = props;
@@ -30,6 +32,9 @@ function Post(props: PostProps) {
             className={styles["post-content"]}
             dangerouslySetInnerHTML={{ __html: post.preview }}
           />
+        )}
+        {post.gallery && post.gallery.length > 0 && (
+          <PostGallery gallery={post.gallery} />
         )}
         {!ruLang && <OnlyRuLang />}
       </main>
