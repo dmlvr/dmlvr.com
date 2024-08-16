@@ -1,18 +1,31 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Blog.module.scss";
 import { BlogProps } from "@/types";
 import Link from "next/link";
 import { formatDateString } from "@/utils";
 import OnlyRuLang from "../OnlyRuLang/OnlyRuLang";
 import { DIRECTUS_API_URL } from "@/const";
+import Prism from "prismjs";
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-typescript.min.js";
+import "prismjs/components/prism-jsx.min.js";
+import "prismjs/components/prism-scss.min.js";
+import usePersonalData from "@/hooks/usePersonalData";
 
 function Blog(props: BlogProps) {
   const { posts, ruLang } = props;
+
+  const personalData = usePersonalData(ruLang);
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
   return (
     <>
       <Head>
-        <title>{`Блог`}</title>
+        <title>{`Блог | ${personalData.name}, ${personalData.jobTitle}`}</title>
       </Head>
       <main className={styles["main"]}>
         <h1 className={styles["title"]}>Блог</h1>
