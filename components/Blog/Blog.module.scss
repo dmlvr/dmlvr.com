@@ -8,13 +8,6 @@
 }
 
 .title {
-  // @include indents-reset;
-  // color: var(--primary-color);
-  // font-size: 48px;
-  // font-weight: 700;
-  // letter-spacing: -1.92px;
-  // margin-bottom: 3rem;
-  // transition: 0.3s;
   @include visually-hidden;
 }
 
@@ -31,9 +24,19 @@
 
 .post-item {
   width: calc(50% - 1rem);
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 2rem 2rem 1rem 2rem;
+  background-color: rgba($secondary-color, 0.1);
+  border-radius: 16px;
 
   @include viewport--m {
     width: 100%;
+  }
+
+  &:hover {
+    background-color: rgba($secondary-color, 0.2);
   }
 }
 
@@ -41,16 +44,10 @@
   width: 100%;
   height: 100%;
   color: var(--primary-color);
-  padding: 2rem;
-  background-color: rgba($secondary-color, 0.1);
-  border-radius: 16px;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  &:hover {
-    background-color: rgba($secondary-color, 0.2);
-  }
 
   @include viewport--m {
     padding: 1rem;

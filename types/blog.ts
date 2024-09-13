@@ -9,7 +9,6 @@ export type BlogProps = Setting & {
 export type PostProps = Setting & {
   post: PostType;
   error?: string;
-  post_id: string;
 };
 
 export type PostType = {
@@ -20,6 +19,7 @@ export type PostType = {
   id: string;
   content: string;
   gallery: PostGalleryType[];
+  likes: string[];
 };
 
 export type PostGalleryType = {

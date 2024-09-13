@@ -12,10 +12,10 @@ import "prismjs/components/prism-typescript.min.js";
 import "prismjs/components/prism-jsx.min.js";
 import "prismjs/components/prism-scss.min.js";
 import usePersonalData from "@/hooks/usePersonalData";
+import Likes from "../Likes/Likes";
 
 function Blog(props: BlogProps) {
   const { posts, ruLang } = props;
-
   const personalData = usePersonalData(ruLang);
 
   useEffect(() => {
@@ -60,6 +60,7 @@ function Blog(props: BlogProps) {
                       </div>
                     )}
                   </Link>
+                  <Likes post={post} />
                 </li>
               );
             })}

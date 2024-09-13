@@ -11,6 +11,7 @@ import "prismjs/components/prism-typescript.min.js";
 import "prismjs/components/prism-jsx.min.js";
 import "prismjs/components/prism-scss.min.js";
 import usePersonalData from "@/hooks/usePersonalData";
+import Likes from "../Likes/Likes";
 
 function Post(props: PostProps) {
   const { post, ruLang } = props;
@@ -47,6 +48,7 @@ function Post(props: PostProps) {
           <PostGallery gallery={post.gallery} />
         )}
         {!ruLang && <OnlyRuLang />}
+        <Likes post={post} />
       </main>
     </>
   );

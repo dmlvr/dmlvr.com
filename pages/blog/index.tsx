@@ -23,7 +23,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   try {
     const posts = (await client.request(
       readItems("Posts" as any, {
-        fields: ["id", "title", "publication_date", "preview", "main_photo"],
+        fields: [
+          "id",
+          "title",
+          "publication_date",
+          "preview",
+          "main_photo",
+          "likes",
+        ],
         filter: {
           status: {
             _eq: "published",

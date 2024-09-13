@@ -5,6 +5,9 @@
   @include main;
   color: var(--primary-color);
   @include custom-scrollbar;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .title {
@@ -59,6 +62,19 @@
     border-radius: 16px;
     height: 50vh;
     width: auto;
+    object-fit: contain;
+
+    @media (max-height: 700px) {
+      width: 100%;
+      height: auto;
+      object-fit: auto;
+    }
+
+    @include viewport--m {
+      width: 100%;
+      height: auto;
+      object-fit: auto;
+    }
   }
 
   pre {

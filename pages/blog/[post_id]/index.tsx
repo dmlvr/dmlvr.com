@@ -34,6 +34,7 @@ export const getServerSideProps: GetServerSideProps = async ({
           "gallery.directus_files_id.id",
           "gallery.directus_files_id.width",
           "gallery.directus_files_id.height",
+          "likes",
         ],
       })
     )) as PostType[];
@@ -41,8 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     return {
       props: {
         ...setting,
-        post,
-        post_id,
+        post: { ...post, id: post_id },
       },
     };
   } catch (error) {

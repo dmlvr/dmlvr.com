@@ -1,0 +1,21 @@
+@import "@/styles/mixin.scss";
+@import "@/styles/variables.scss";
+
+.btn {
+  @include btn-reset;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  span {
+    color: var(--secondary-color);
+  }
+
+  svg {
+    color: var(--secondary-color);
+  }
+
+  &--active svg {
+    color: red;
+  }
+}
