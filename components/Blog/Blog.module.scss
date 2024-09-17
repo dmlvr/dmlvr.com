@@ -33,6 +33,7 @@
 
   @include viewport--m {
     width: 100%;
+    padding: 1.5rem 1rem 1rem;
   }
 
   &:hover {
@@ -50,7 +51,7 @@
   align-items: flex-start;
 
   @include viewport--m {
-    padding: 1rem;
+    // padding: 1rem;
   }
 }
 
@@ -67,6 +68,9 @@
 .post-preview {
   margin-top: 2rem;
   line-height: 1.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   p {
     @include indents-reset;
