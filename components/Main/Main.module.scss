@@ -1,5 +1,5 @@
-@import '@/styles/mixin.scss';
-@import '@/styles/variables.scss';
+@import "@/styles/mixin.scss";
+@import "@/styles/variables.scss";
 
 .main {
   @include main;
@@ -73,7 +73,7 @@
   }
 }
 
-.techstack{
+.techstack {
   @include indents-reset;
   color: var(--secondary-color);
   text-align: center;
@@ -101,9 +101,50 @@
   }
 }
 
+.btn-container {
+  position: relative;
+}
+
 .btn {
   @include btn;
-  font-size: 12px;
+  font-size: 14px;
+
+  &--open {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.cv-list {
+  @include list-reset;
+  position: absolute;
+  width: 100%;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 14px;
+
+  li {
+    display: flex;
+    width: 100%;
+  }
+
+  a {
+    width: 100%;
+    padding: 8px 30px;
+    color: var(--tertiary-color);
+
+    &:hover {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+  }
+
+  &--hidden {
+    @include visually-hidden;
+  }
 }
 
 .socialList {

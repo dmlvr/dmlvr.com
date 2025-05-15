@@ -48,7 +48,7 @@ function Post(props: PostProps) {
           <PostGallery gallery={post.gallery} />
         )}
         {!ruLang && <OnlyRuLang />}
-        <Likes post={post} />
+        {/* <Likes post={post} /> */}
       </main>
     </>
   );
