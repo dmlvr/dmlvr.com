@@ -1,0 +1,26 @@
+@import "@/styles/mixin.scss";
+
+.main {
+  @include main;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    color: var(--primary-color);
+  }
+}
+
+.title {
+  @include indents-reset;
+  color: var(--primary-color);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -1.92px;
+  transition: 0.3s;
+}
+
+.btn {
+  @include btn;
+  align-self: flex-start;
+}

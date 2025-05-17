@@ -5,8 +5,7 @@ import { getYears } from "@/utils/getYears";
 import { useEffect, useRef, useState } from "react";
 import ym from "react-yandex-metrika";
 
-const useMain = ({ setting, cvs }: MainProps) => {
-  const { ruLang, darkTheme } = setting;
+const useMain = ({ ruLang, darkTheme, cvs }: MainProps) => {
   const [showCVs, setShowCVs] = useState(false);
   const btnRef = useRef<HTMLDivElement | null>(null);
 

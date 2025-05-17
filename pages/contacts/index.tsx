@@ -8,10 +8,7 @@ export default function ContactsPage(props: Setting & { csrfToken: string }) {
   return <Contacts {...props} />;
 }
 
-export const getServerSideProps: GetServerSideProps<{
-  cookiesDarkTheme: boolean | null;
-  cookiesRuLang: boolean;
-}> = async ({ req, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const setting = getSetting(req as NextApiRequest);
   const csrfToken = createCsrfToken(
     req as NextApiRequest,

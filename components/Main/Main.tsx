@@ -68,7 +68,9 @@ function Main(props: MainProps) {
               {cvs.map((el) => (
                 <li key={el.file}>
                   <Link
-                    href={`${DIRECTUS_API_URL}/assets/${el.file}/${personalData.name}.pdf`}
+                    href={`${DIRECTUS_API_URL}/assets/${
+                      el.file
+                    }/${personalData.name.replace(/ /g, "_")}.pdf`}
                     target="_blank"
                     onClick={getCV}
                   >

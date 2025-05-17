@@ -7,22 +7,19 @@ import YM from "@/components/YM";
 import Head from "next/head";
 import { useColors } from "@/hooks/useColors";
 import usePersonalData from "@/hooks/usePersonalData";
-import { UserUUIDProvider } from "@/context/UserUUID";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { cookiesRuLang } = pageProps ?? false;
   const { cookiesDarkTheme } = pageProps ?? null;
 
   const [darkTheme, setDarkTheme] = useState(cookiesDarkTheme);
-  const [ruLang, setRuLang] = useState(cookiesRuLang);
+  const [ruLang, setRuLang] = useState<boolean>(cookiesRuLang);
 
   useEffect(() => {
-    const initDarkTheme =
-      cookiesDarkTheme === null
-        ? window && window.matchMedia("(prefers-color-scheme: dark)").matches
-        : cookiesDarkTheme;
-
-    setDarkTheme(initDarkTheme);
+    setDarkTheme(
+      cookiesDarkTheme ??
+        (window && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
   }, [cookiesDarkTheme]);
 
   const themeHandler = (value?: boolean) => {
@@ -41,24 +38,27 @@ export default function App({ Component, pageProps }: AppProps) {
   const personalData = usePersonalData(ruLang);
 
   return (
-    <UserUUIDProvider>
-      <div className="main">
-        <Head>
-          <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-          <meta
-            name="description"
-            content={`${personalData.name}, ${personalData.jobTitle} | ${personalData.stack}`}
-          />
-        </Head>
-        <YM />
-        <Header
-          darkTheme={darkTheme}
-          themeHandler={themeHandler}
-          ruLang={ruLang}
-          ruLangHandler={ruLangHandler}
+    <div className="main">
+      <Head>
+        <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+        <meta
+          name="description"
+          content={`${personalData.name}, ${personalData.jobTitle} | ${personalData.stack}`}
         />
-        <Component darkTheme={darkTheme} ruLang={ruLang} {...pageProps} />
-      </div>
-    </UserUUIDProvider>
+      </Head>
+      <YM />
+      <Header
+        darkTheme={darkTheme}
+        themeHandler={themeHandler}
+        ruLang={ruLang}
+        ruLangHandler={ruLangHandler}
+      />
+      <Component
+        key={`${darkTheme}${ruLang}`}
+        darkTheme={darkTheme}
+        ruLang={ruLang}
+        {...pageProps}
+      />
+    </div>
   );
 }
