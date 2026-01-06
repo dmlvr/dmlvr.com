@@ -15,10 +15,10 @@ const useHeader = (ruLang: boolean) => {
       text: ruLang ? "Опыт и проекты" : "Portfolio",
       path: "/portfolio",
     },
-    {
-      text: ruLang ? "Блог" : "Blog",
-      path: "/blog",
-    },
+    // {
+    //   text: ruLang ? "Блог" : "Blog",
+    //   path: "/blog",
+    // },
     {
       text: ruLang ? "Контакты" : "Contacts",
       path: "/contacts",
