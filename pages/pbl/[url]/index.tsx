@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextApiRequest } from "next";
+import { GetServerSideProps } from "next";
 import React from "react";
 
 export default function Page() {
@@ -19,8 +19,6 @@ export const getServerSideProps: GetServerSideProps<{}> = async ({
   try {
     const decodedUrl = Buffer.from(url, "base64url").toString("utf-8");
 
-    console.log("decodedUrl", decodedUrl);
-
     return {
       redirect: {
         destination: decodedUrl,
@@ -34,7 +32,4 @@ export const getServerSideProps: GetServerSideProps<{}> = async ({
     };
   }
 
-  return {
-    notFound: true,
-  };
 };

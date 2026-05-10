@@ -1,4 +1,3 @@
-import { string } from "zod";
 import { Setting } from "./setting";
 
 export type BlogProps = Setting & {

@@ -4,7 +4,7 @@ import { getSetting } from "@/utils/getSetting";
 import { MainProps } from "@/types";
 import { getClient } from "@/utils";
 import { readItems } from "@directus/sdk";
-import { CVs } from "@/types/cvs";
+import { CV } from "@/types/cvs";
 
 export default function Home(props: MainProps) {
   return <Main {...props} />;
@@ -13,24 +13,24 @@ export default function Home(props: MainProps) {
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const setting = getSetting(req as NextApiRequest);
 
-  // const { client, isClient } = getClient();
+  const { client } = getClient();
 
-  // if (!isClient) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
+  let cvs: CV[] = [];
 
-  // const cvs = (await client.request(
-  //   readItems("cvs" as any, {
-  //     fields: ["name", "file"],
-  //   })
-  // )) as CVs[];
+  try {
+    cvs = (await client.request(
+      readItems("cvs" as any, {
+        fields: ["name", "file"],
+      })
+    )) as CV[];
+  } catch (error) {
+    console.error('cv is not found');
+  }
 
   return {
     props: {
       ...setting,
-      // cvs,
+      cvs,
     },
   };
 };

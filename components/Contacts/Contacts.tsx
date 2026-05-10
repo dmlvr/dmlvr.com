@@ -12,8 +12,9 @@ function Contacts({
   ruLang,
   darkTheme,
   csrfToken,
-}: Setting & { csrfToken: string }) {
-  const { texts, socialList, personalData } = useContacts(ruLang, csrfToken);
+  isShowForm,
+}: Setting & { csrfToken: string; isShowForm: boolean }) {
+  const { texts, socialList, personalData } = useContacts(ruLang);
 
   return (
     <>
@@ -55,7 +56,7 @@ function Contacts({
             ))}
           </ul>
           <p>{texts.paragraph}</p>
-          <Form ruLang={ruLang} csrfToken={csrfToken} darkTheme={darkTheme} />
+          { isShowForm && <Form ruLang={ruLang} csrfToken={csrfToken} darkTheme={darkTheme} /> }
         </div>
       </main>
     </>

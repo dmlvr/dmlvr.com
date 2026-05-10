@@ -13,7 +13,7 @@ const useMain = ({ ruLang, darkTheme, cvs }: MainProps) => {
     hello: ruLang ? "Привет, меня зовут" : "Hello, I am",
     description: ruLang ? (
       <>
-        JavaScript разработчик. Более {getYears(new Date(2020, 10, 1))}-х лет
+        JavaScript разработчик. Более {getYears(new Date(2020, 10, 1))} лет
         опыта <br />
         коммерческой разработки.
       </>

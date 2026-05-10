@@ -40,23 +40,23 @@ export default async function handler(
         message,
       });
 
-      const port = process.env.NEXT_PUBLIC_EMAIL_PORT
-        ? parseInt(process.env.NEXT_PUBLIC_EMAIL_PORT, 10)
+      const port = process.env.EMAIL_PORT
+        ? parseInt(process.env.EMAIL_PORT, 10)
         : undefined;
       const transporter = nodemailer.createTransport({
-        host: process.env.NEXT_PUBLIC_EMAIL_SMTP as string,
+        host: process.env.EMAIL_SMTP as string,
         port,
         secure: true,
         auth: {
-          user: process.env.NEXT_PUBLIC_EMAIL_SENDER as string,
-          pass: process.env.NEXT_PUBLIC_EMAIL_SENDER_PASSWORD as string,
+          user: process.env.EMAIL_SENDER as string,
+          pass: process.env.EMAIL_SENDER_PASSWORD as string,
         },
       });
 
       try {
         await transporter.sendMail({
-          from: process.env.NEXT_PUBLIC_EMAIL_SENDER,
-          to: process.env.NEXT_PUBLIC_EMAIL_RECIPIENT,
+          from: process.env.EMAIL_SENDER,
+          to: process.env.EMAIL_RECIPIENT,
           subject: "Новая форма обратной связи",
           text: `Имя: ${sanitizeString(
             name
