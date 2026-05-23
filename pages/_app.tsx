@@ -1,4 +1,5 @@
 import Header from "@/components/Header/Header";
+// @ts-expect-error
 import "@/styles/global.scss";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";

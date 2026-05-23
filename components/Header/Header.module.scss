@@ -35,7 +35,7 @@
   align-items: center;
   gap: 10px;
   justify-content: space-between;
-  flex-grow: 1;
+  margin-left: auto;
 
   @include viewport--m {
     position: fixed;

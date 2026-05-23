@@ -6,10 +6,7 @@ const usePersonalData = (ruLang: boolean) => {
     jobTitle: ruLang
     ? 'JavaScript разработчик'
     : 'JavaScript developer',
-    cvLink: ruLang
-    ? 'Dmitry_Lavrinovich_-_Javascript_Developer-ru.pdf'
-    : 'Dmitry_Lavrinovich_-_Javascript_Developer-en.pdf',
-    stack: 'Node.js, Fastify, Express, Docker, Directus, PostrgeSQL, React, Next.js, Redux, HTML5, CSS3/LESS/SASS',
+    stack: 'React, Next.js, Node.js, Fastify, Express, Docker, Directus, PostgreSQL',
   }
 }
 
